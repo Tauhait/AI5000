@@ -1,0 +1,4130 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)https://machinelearningmastery.com/bayes-optimal-classifier/ -->
+<html lang="en-US" class=" js csstransforms3d csstransitions"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script id="twitter-wjs" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/widgets.js"></script><script id="twitcount_plugins" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/twitcount.js"></script><script type="text/javascript" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/track"></script><script type="text/javascript" async="" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/client.js"></script><script type="text/javascript" async="" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/9556588.js"></script><script src="./A Gentle Introduction to the Bayes Optimal Classifier_files/834324500844861" async=""></script><script async="" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/fbevents.js"></script><script type="text/javascript">if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script type="text/javascript">class RocketLazyLoadScripts{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventListener,e.eventOptions)))}_removeUserInteractionListener(e){this.triggerEvents.forEach((t=>window.removeEventListener(t,e.userEventListener,e.eventOptions)))}triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}async _loadEverythingNow(){this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("rocket-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._requestAnimFrame(),new Promise((t=>{const n=document.createElement("script");let r;[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type",r=e.nodeValue),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){var e=document.createDocumentFragment();[...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async].forEach((t=>{const n=t.getAttribute("src");if(n){const t=document.createElement("link");t.href=n,t.rel="preload",t.as="script",e.appendChild(t)}})),document.head.appendChild(e)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(r){e["rocket"+t]=n=r}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._requestAnimFrame(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-load")),await this._requestAnimFrame(),window.rocketonload&&window.rocketonload(),await this._requestAnimFrame(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),window.dispatchEvent(new Event("rocket-pageshow")),await this._requestAnimFrame(),window.rocketonpageshow&&window.rocketonpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,r=document.createRange(),i=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const a=document.createDocumentFragment();r.setStart(a,0),a.appendChild(r.createContextualFragment(t)),i.insertBefore(a,o)}}async _requestAnimFrame(){return new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts(["keydown","mousemove","touchmove","touchstart","touchend","wheel"]);e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
+
+
+
+<link rel="pingback" href="https://machinelearningmastery.com/xmlrpc.php">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$','$'],['\\(','\\)']], 
+    processEscapes: true
+  },
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore|editor-rich-text'
+  }
+};
+
+</script>
+
+<!--  Mobile viewport scale -->
+<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" name="viewport">
+
+	<!-- This site is optimized with the Yoast SEO plugin v17.5 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>A Gentle Introduction to the Bayes Optimal Classifier</title><link rel="stylesheet" href="./A Gentle Introduction to the Bayes Optimal Classifier_files/6a058402b8b9d46895240339bcae1c97.css" media="all" data-minify="1">
+	<link rel="canonical" href="https://machinelearningmastery.com/bayes-optimal-classifier/">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="A Gentle Introduction to the Bayes Optimal Classifier">
+	<meta property="og:description" content="The Bayes Optimal Classifier is a probabilistic model that makes the most probable prediction for a new example. It is […]">
+	<meta property="og:url" content="https://machinelearningmastery.com/bayes-optimal-classifier/">
+	<meta property="og:site_name" content="Machine Learning Mastery">
+	<meta property="article:publisher" content="https://www.facebook.com/MachineLearningMastery/">
+	<meta property="article:author" content="https://www.facebook.com/MachineLearningMastery/">
+	<meta property="article:published_time" content="2019-12-03T18:00:56+00:00">
+	<meta property="article:modified_time" content="2020-08-19T00:32:33+00:00">
+	<meta property="og:image" content="https://machinelearningmastery.com/wp-content/uploads/2019/12/A-Gentle-Introduction-to-the-Bayes-Optimal-Classifier.jpg">
+	<meta property="og:image:width" content="800">
+	<meta property="og:image:height" content="600">
+	<meta name="twitter:label1" content="Written by">
+	<meta name="twitter:data1" content="Jason Brownlee">
+	<meta name="twitter:label2" content="Est. reading time">
+	<meta name="twitter:data2" content="8 minutes">
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://machinelearningmastery.com/#organization","name":"Machine Learning Mastery","url":"https://machinelearningmastery.com/","sameAs":["https://www.facebook.com/MachineLearningMastery/","https://www.linkedin.com/company/machine-learning-mastery","https://twitter.com/TeachTheMachine"],"logo":{"@type":"ImageObject","@id":"https://machinelearningmastery.com/#logo","inLanguage":"en-US","url":"https://machinelearningmastery.com/wp-content/uploads/2016/09/cropped-icon.png","contentUrl":"https://machinelearningmastery.com/wp-content/uploads/2016/09/cropped-icon.png","width":512,"height":512,"caption":"Machine Learning Mastery"},"image":{"@id":"https://machinelearningmastery.com/#logo"}},{"@type":"WebSite","@id":"https://machinelearningmastery.com/#website","url":"https://machinelearningmastery.com/","name":"Machine Learning Mastery","description":"Making developers awesome at machine learning","publisher":{"@id":"https://machinelearningmastery.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://machinelearningmastery.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://machinelearningmastery.com/bayes-optimal-classifier/#primaryimage","inLanguage":"en-US","url":"https://machinelearningmastery.com/wp-content/uploads/2019/12/A-Gentle-Introduction-to-the-Bayes-Optimal-Classifier.jpg","contentUrl":"https://machinelearningmastery.com/wp-content/uploads/2019/12/A-Gentle-Introduction-to-the-Bayes-Optimal-Classifier.jpg","width":800,"height":600,"caption":"A Gentle Introduction to the Bayes Optimal Classifier Photo by Nate Loper, some rights reserved."},{"@type":"WebPage","@id":"https://machinelearningmastery.com/bayes-optimal-classifier/#webpage","url":"https://machinelearningmastery.com/bayes-optimal-classifier/","name":"A Gentle Introduction to the Bayes Optimal Classifier","isPartOf":{"@id":"https://machinelearningmastery.com/#website"},"primaryImageOfPage":{"@id":"https://machinelearningmastery.com/bayes-optimal-classifier/#primaryimage"},"datePublished":"2019-12-03T18:00:56+00:00","dateModified":"2020-08-19T00:32:33+00:00","breadcrumb":{"@id":"https://machinelearningmastery.com/bayes-optimal-classifier/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://machinelearningmastery.com/bayes-optimal-classifier/"]}]},{"@type":"BreadcrumbList","@id":"https://machinelearningmastery.com/bayes-optimal-classifier/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://machinelearningmastery.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://machinelearningmastery.com/blog/"},{"@type":"ListItem","position":3,"name":"A Gentle Introduction to the Bayes Optimal Classifier"}]},{"@type":"Article","@id":"https://machinelearningmastery.com/bayes-optimal-classifier/#article","isPartOf":{"@id":"https://machinelearningmastery.com/bayes-optimal-classifier/#webpage"},"author":{"@id":"https://machinelearningmastery.com/#/schema/person/e2d0ff4828d406a3b47e5a3c9a0591e8"},"headline":"A Gentle Introduction to the Bayes Optimal Classifier","datePublished":"2019-12-03T18:00:56+00:00","dateModified":"2020-08-19T00:32:33+00:00","mainEntityOfPage":{"@id":"https://machinelearningmastery.com/bayes-optimal-classifier/#webpage"},"wordCount":1694,"commentCount":10,"publisher":{"@id":"https://machinelearningmastery.com/#organization"},"image":{"@id":"https://machinelearningmastery.com/bayes-optimal-classifier/#primaryimage"},"thumbnailUrl":"https://machinelearningmastery.com/wp-content/uploads/2019/12/A-Gentle-Introduction-to-the-Bayes-Optimal-Classifier.jpg","articleSection":["Probability"],"inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://machinelearningmastery.com/bayes-optimal-classifier/#respond"]}]},{"@type":"Person","@id":"https://machinelearningmastery.com/#/schema/person/e2d0ff4828d406a3b47e5a3c9a0591e8","name":"Jason Brownlee","image":{"@type":"ImageObject","@id":"https://machinelearningmastery.com/#personlogo","inLanguage":"en-US","url":"https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=96&d=mm&r=g","contentUrl":"https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=96&d=mm&r=g","caption":"Jason Brownlee"},"description":"Jason Brownlee, PhD is a machine learning specialist who teaches developers how to get results with modern machine learning methods via hands-on tutorials.","sameAs":["http://MachineLearningMastery.com","https://www.facebook.com/MachineLearningMastery/","https://www.linkedin.com/company/machine-learning-mastery","https://twitter.com/teachthemachine"],"url":"https://machinelearningmastery.com/author/jasonb/"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net/">
+<link rel="dns-prefetch" href="https://ads.adthrive.com/">
+<link rel="dns-prefetch" href="https://www.google-analytics.com/">
+<link rel="dns-prefetch" href="https://loadeu.exelator.com/">
+<link rel="dns-prefetch" href="https://sync.crwdcntrl.net/">
+<link rel="dns-prefetch" href="https://gdpr-wrapper.privacymanager.io/">
+<link rel="dns-prefetch" href="https://securepubads.g.doubleclick.net/">
+<link rel="dns-prefetch" href="https://gdpr.privacymanager.io/">
+<link rel="dns-prefetch" href="https://sb.scorecardresearch.com/">
+<link rel="dns-prefetch" href="https://confiant-integrations.global.ssl.fastly.net/">
+
+<link rel="alternate" type="application/rss+xml" title="Machine Learning Mastery » Feed" href="https://feeds.feedburner.com/MachineLearningMastery">
+<link rel="alternate" type="application/rss+xml" title="Machine Learning Mastery » Comments Feed" href="https://machinelearningmastery.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Machine Learning Mastery » A Gentle Introduction to the Bayes Optimal Classifier Comments Feed" href="https://machinelearningmastery.com/bayes-optimal-classifier/feed/">
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	
+
+
+
+
+
+
+
+<!--[if lt IE 9]>
+<link href="https://machinelearningmastery.com/wp-content/themes/canvas-new/css/non-responsive.css" rel="stylesheet" type="text/css" />
+<style type="text/css">.col-full, #wrapper { width: 960px; max-width: 960px; } #inner-wrapper { padding: 0; } body.full-width #header, #nav-container, body.full-width #content, body.full-width #footer-widgets, body.full-width #footer { padding-left: 0; padding-right: 0; } body.fixed-mobile #top, body.fixed-mobile #header-container, body.fixed-mobile #footer-container, body.fixed-mobile #nav-container, body.fixed-mobile #footer-widgets-container { min-width: 960px; padding: 0 1em; } body.full-width #content { width: auto; padding: 0 1em;}</style>
+<![endif]-->
+<script type="text/javascript" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/jquery.min.js" id="jquery-core-js" defer=""></script>
+<script type="text/javascript" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/jquery-migrate.min.js" id="jquery-migrate-js" defer=""></script>
+<script type="text/javascript" id="urvanov_syntax_highlighter_js-js-extra">
+/* <![CDATA[ */
+var UrvanovSyntaxHighlighterSyntaxSettings = {"version":"2.8.26","is_admin":"0","ajaxurl":"https:\/\/machinelearningmastery.com\/wp-admin\/admin-ajax.php","prefix":"urvanov-syntax-highlighter-","setting":"urvanov-syntax-highlighter-setting","selected":"urvanov-syntax-highlighter-setting-selected","changed":"urvanov-syntax-highlighter-setting-changed","special":"urvanov-syntax-highlighter-setting-special","orig_value":"data-orig-value","debug":""};
+var UrvanovSyntaxHighlighterSyntaxStrings = {"copy":"Copied to the clipboard","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/urvanov_syntax_highlighter.min.js" id="urvanov_syntax_highlighter_js-js" defer=""></script>
+<script type="text/javascript" id="ssb-front-js-js-extra">
+/* <![CDATA[ */
+var SSB = {"ajax_url":"https:\/\/machinelearningmastery.com\/wp-admin\/admin-ajax.php","fb_share_nonce":"c0ab43f135"};
+/* ]]> */
+</script>
+<script data-minify="1" type="text/javascript" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/front.js" id="ssb-front-js-js" defer=""></script>
+<script type="text/javascript" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/third-party.min.js" id="third-party-js" defer=""></script>
+<script type="text/javascript" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/modernizr.min.js" id="modernizr-js" defer=""></script>
+<script type="text/javascript" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/general.min.js" id="general-js" defer=""></script>
+<link rel="https://api.w.org/" href="https://machinelearningmastery.com/wp-json/"><link rel="alternate" type="application/json" href="https://machinelearningmastery.com/wp-json/wp/v2/posts/9158"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://machinelearningmastery.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://machinelearningmastery.com/wp-includes/wlwmanifest.xml"> 
+<link rel="shortlink" href="https://machinelearningmastery.com/?p=9158">
+<link rel="alternate" type="application/json+oembed" href="https://machinelearningmastery.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmachinelearningmastery.com%2Fbayes-optimal-classifier%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://machinelearningmastery.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmachinelearningmastery.com%2Fbayes-optimal-classifier%2F&amp;format=xml">
+<style type="text/css">.crp_title {
+    font-size: medium;
+}
+.group.portfolio-img img {
+    height: auto;
+    padding: 3px;
+	  border: 0px solid #fff;
+    background: rgba(255,255,255,.7);
+}
+.crp_related ul li {
+    background: #fff;
+    padding: 3px;
+    margin: 0 0 1em;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-shadow: 0 0px 0px 0 rgb(0 0 0 / 18%);
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border: 0px solid #fff;
+    animation: wzslideup .8s ease-out,wzfadein 1s ease-out;
+    -webkit-animation: wzslideup .8s ease-out,wzfadein 1s ease-out;
+    -moz-animation: wzslideup .8s ease-out,wzfadein 1s ease;
+    font-size: 1em;
+    text-align: center;
+    display: inline-block;
+}</style>    <style type="text/css">
+
+      .mpcs-classroom .nav-back i,
+      .mpcs-classroom .navbar-section a.btn,
+      .mpcs-classroom .navbar-section a,
+      .mpcs-classroom .navbar-section button {
+        color: rgba(255, 255, 255) !important;
+      }
+
+      .mpcs-classroom .navbar-section .dropdown .menu a {
+        color: rgba(44, 54, 55) !important;
+      }
+
+      .mpcs-classroom .mpcs-progress-ring {
+        background-color: rgba(29, 166, 154) !important;
+      }
+
+      .mpcs-classroom .mpcs-course-filter .dropdown .btn span,
+      .mpcs-classroom .mpcs-course-filter .dropdown .btn i,
+      .mpcs-classroom .mpcs-course-filter .input-group .input-group-btn,
+      .mpcs-classroom .mpcs-course-filter .input-group .mpcs-search,
+      .mpcs-classroom .mpcs-course-filter .input-group input[type=text],
+      .mpcs-classroom .mpcs-course-filter .dropdown a,
+      .mpcs-classroom .pagination,
+      .mpcs-classroom .pagination i,
+      .mpcs-classroom .pagination a {
+        color: rgba(44, 54, 55) !important;
+        border-color: rgba(44, 54, 55) !important;
+      }
+
+      /* body.mpcs-classroom a{
+        color: rgba();
+      } */
+
+      #mpcs-navbar,
+      #mpcs-navbar button#previous_lesson_link,
+      #mpcs-navbar button#previous_lesson_link:hover {
+        background: rgba(44, 54, 55);
+      }
+
+      .course-progress .user-progress,
+      .btn-green,
+      #mpcs-navbar button:not(#previous_lesson_link){
+        background: rgba(29, 166, 154, 0.9);
+      }
+
+      .btn-green:hover,
+      #mpcs-navbar button:not(#previous_lesson_link):focus,
+      #mpcs-navbar button:not(#previous_lesson_link):hover{
+        background: rgba(29, 166, 154);
+      }
+
+      .btn-green{border: rgba(29, 166, 154)}
+
+      .course-progress .progress-text,
+      .mpcs-lesson i.mpcs-circle-regular {
+        color: rgba(29, 166, 154)
+      }
+
+      #mpcs-main #bookmark, .mpcs-lesson.current{background: rgba(29, 166, 154, 0.3)}
+
+      .mpcs-instructor .tile-subtitle{
+        color: rgba(29, 166, 154, 1)
+      }
+
+    </style>
+     <style media="screen">
+
+		.simplesocialbuttons.simplesocialbuttons_inline .ssb-fb-like {
+	  margin: ;
+	}
+		 /*inline margin*/
+	
+	
+	
+	
+	
+	
+			 .simplesocialbuttons.simplesocialbuttons_inline.simplesocial-simple-icons button{
+		 margin: ;
+	 }
+
+			 /*margin-digbar*/
+
+	
+	
+	
+	
+	
+	
+	
+</style>
+
+<!-- Open Graph Meta Tags generated by Simple Social Buttons 3.2.4 -->
+<meta property="og:title" content="A Gentle Introduction to the Bayes Optimal Classifier - Machine Learning Mastery">
+<meta property="og:description" content="The Bayes Optimal Classifier is a probabilistic model that makes the most probable prediction for a new example.
+
+It is described using the Bayes Theorem that provides a principled way for calculating a conditional probability. It is also closely related to the Maximum a Posteriori: a probabilistic framework referred to as MAP that finds the most probable hypothesis for a training">
+<meta property="og:url" content="https://machinelearningmastery.com/bayes-optimal-classifier/">
+<meta property="og:site_name" content="Machine Learning Mastery">
+<meta property="og:image" content="https://machinelearningmastery.com/wp-content/uploads/2019/12/A-Gentle-Introduction-to-the-Bayes-Optimal-Classifier.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="The Bayes Optimal Classifier is a probabilistic model that makes the most probable prediction for a new example.
+
+It is described using the Bayes Theorem that provides a principled way for calculating a conditional probability. It is also closely related to the Maximum a Posteriori: a probabilistic framework referred to as MAP that finds the most probable hypothesis for a training">
+<meta name="twitter:title" content="A Gentle Introduction to the Bayes Optimal Classifier - Machine Learning Mastery">
+<meta property="twitter:image" content="https://machinelearningmastery.com/wp-content/uploads/2019/12/A-Gentle-Introduction-to-the-Bayes-Optimal-Classifier.jpg">
+    
+    <script type="text/javascript">
+        var ajaxurl = 'https://machinelearningmastery.com/wp-admin/admin-ajax.php';
+    </script>
+<style id="wplmi-inline-css" type="text/css"> span.wplmi-user-avatar { width: 16px;display: inline-block !important;flex-shrink: 0; } img.wplmi-elementor-avatar { border-radius: 100%;margin-right: 3px; } 
+
+</style>
+
+<link rel="preload" as="font" href="https://machinelearningmastery.com/wp-content/themes/canvas-new/includes/fonts/fontawesome-webfont.woff2?v=4.5.0" crossorigin="">
+<!-- Custom CSS Styling -->
+<style type="text/css">
+#logo .site-title, #logo .site-description { display:none; }
+body {background-repeat:no-repeat;background-position:top left;background-attachment:scroll;border-top:0px solid #000000;}
+#header {background-repeat:no-repeat;background-position:left top;margin-top:0px;margin-bottom:0px;padding-top:10px;padding-bottom:10px;border:0px solid ;}
+#logo .site-title a {font:bold 40px/1em "Helvetica Neue", Helvetica, sans-serif;color:#222222;}
+#logo .site-description {font:normal 13px/1em "Helvetica Neue", Helvetica, sans-serif;color:#999999;}
+body, p { font:normal 14px/1.5em "Helvetica Neue", Helvetica, sans-serif;color:#555555; }
+h1 { font:bold 28px/1.2em "Helvetica Neue", Helvetica, sans-serif;color:#222222; }h2 { font:bold 24px/1.2em "Helvetica Neue", Helvetica, sans-serif;color:#222222; }h3 { font:bold 20px/1.2em "Helvetica Neue", Helvetica, sans-serif;color:#222222; }h4 { font:bold 16px/1.2em "Helvetica Neue", Helvetica, sans-serif;color:#222222; }h5 { font:bold 14px/1.2em "Helvetica Neue", Helvetica, sans-serif;color:#222222; }h6 { font:bold 12px/1.2em "Helvetica Neue", Helvetica, sans-serif;color:#222222; }
+.page-title, .post .title, .page .title {font:bold 28px/1.1em "Helvetica Neue", Helvetica, sans-serif;color:#222222;}
+.post .title a:link, .post .title a:visited, .page .title a:link, .page .title a:visited {color:#222222}
+.post-meta { font:normal 12px/1.5em "Helvetica Neue", Helvetica, sans-serif;color:#999999; }
+.entry, .entry p{ font:normal 15px/1.5em "Helvetica Neue", Helvetica, sans-serif;color:#555555; }
+.post-more {font:normal 13px/1.5em "Helvetica Neue", Helvetica, sans-serif;color:;border-top:0px solid #e6e6e6;border-bottom:0px solid #e6e6e6;}
+#post-author, #connect {border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;border-left:1px solid #e6e6e6;border-right:1px solid #e6e6e6;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;background-color:#fafafa}
+.nav-entries a, .woo-pagination { font:normal 13px/1em "Helvetica Neue", Helvetica, sans-serif;color:#888; }
+.woo-pagination a, .woo-pagination a:hover {color:#888!important}
+.widget h3 {font:bold 14px/1.2em "Helvetica Neue", Helvetica, sans-serif;color:#555555;border-bottom:1px solid #e6e6e6;}
+.widget_recent_comments li, #twitter li { border-color: #e6e6e6;}
+.widget p, .widget .textwidget { font:normal 13px/1.5em "Helvetica Neue", Helvetica, sans-serif;color:#555555; }
+.widget {font:normal 13px/1.5em "Helvetica Neue", Helvetica, sans-serif;color:#555555;border-radius:0px;-moz-border-radius:0px;-webkit-border-radius:0px;}
+#tabs .inside li a, .widget_woodojo_tabs .tabbable .tab-pane li a { font:bold 12px/1.5em "Helvetica Neue", Helvetica, sans-serif;color:#555555; }
+#tabs .inside li span.meta, .widget_woodojo_tabs .tabbable .tab-pane li span.meta { font:300 11px/1.5em "Helvetica Neue", Helvetica, sans-serif;color:#999999; }
+#tabs ul.wooTabs li a, .widget_woodojo_tabs .tabbable .nav-tabs li a { font:300 11px/2em "Helvetica Neue", Helvetica, sans-serif;color:#999999; }
+@media only screen and (min-width:768px) {
+ul.nav li a, #navigation ul.rss a, #navigation ul.cart a.cart-contents, #navigation .cart-contents #navigation ul.rss, #navigation ul.nav-search, #navigation ul.nav-search a { font:bold 15px/1.2em "Helvetica Neue", Helvetica, sans-serif;color:#ffffff; } #navigation ul.rss li a:before, #navigation ul.nav-search a.search-contents:before { color:#ffffff;}
+#navigation ul.nav > li a:hover, #navigation ul.nav > li:hover a, #navigation ul.nav li ul li a, #navigation ul.cart > li:hover > a, #navigation ul.cart > li > ul > div, #navigation ul.cart > li > ul > div p, #navigation ul.cart > li > ul span, #navigation ul.cart .cart_list a, #navigation ul.nav li.current_page_item a, #navigation ul.nav li.current_page_parent a, #navigation ul.nav li.current-menu-ancestor a, #navigation ul.nav li.current-cat a, #navigation ul.nav li.current-menu-item a { color:#eeeeee!important; }
+#navigation ul.nav > li a:hover, #navigation ul.nav > li:hover, #navigation ul.nav li ul, #navigation ul.cart li:hover a.cart-contents, #navigation ul.nav-search li:hover a.search-contents, #navigation ul.nav-search a.search-contents + ul, #navigation ul.cart a.cart-contents + ul, #navigation ul.nav li.current_page_item a, #navigation ul.nav li.current_page_parent a, #navigation ul.nav li.current-menu-ancestor a, #navigation ul.nav li.current-cat a, #navigation ul.nav li.current-menu-item a{background-color:#84abc7!important}
+#navigation ul.nav li ul, #navigation ul.cart > li > ul > div  { border: 0px solid #dbdbdb; }
+#navigation ul.nav > li:hover > ul  { left: 0; }
+#navigation ul.nav > li  { border-right: 0px solid #dbdbdb; }#navigation ul.nav > li:hover > ul  { left: 0; }
+#navigation { box-shadow: none; -moz-box-shadow: none; -webkit-box-shadow: none; }#navigation ul li:first-child, #navigation ul li:first-child a { border-radius:0px 0 0 0px; -moz-border-radius:0px 0 0 0px; -webkit-border-radius:0px 0 0 0px; }
+#navigation {background:#84abc7;border-top:0px solid #dbdbdb;border-bottom:0px solid #dbdbdb;border-left:0px solid #dbdbdb;border-right:0px solid #dbdbdb;border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px;}
+#top ul.nav li a { font:normal 12px/1.6em "Helvetica Neue", Helvetica, sans-serif;color:#ddd; }
+}
+#footer, #footer p { font:normal 13px/1.4em "Helvetica Neue", Helvetica, sans-serif;color:#999999; }
+#footer {border-top:1px solid #dbdbdb;border-bottom:0px solid ;border-left:0px solid ;border-right:0px solid ;border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px;}
+.magazine #loopedSlider .content h2.title a { font:bold 24px/1em Arial, sans-serif;color:#ffffff; }
+.wooslider-theme-magazine .slide-title a { font:bold 24px/1em Arial, sans-serif;color:#ffffff; }
+.magazine #loopedSlider .content .excerpt p { font:300 13px/1.5em Arial, sans-serif;color:#cccccc; }
+.wooslider-theme-magazine .slide-content p, .wooslider-theme-magazine .slide-excerpt p { font:300 13px/1.5em Arial, sans-serif;color:#cccccc; }
+.magazine .block .post .title a {font:bold 18px/1.2em Helvetica Neue, Helvetica, sans-serif;color:#222222; }
+#loopedSlider.business-slider .content h2 { font:bold 24px/1em Arial, sans-serif;color:#ffffff; }
+#loopedSlider.business-slider .content h2.title a { font:bold 24px/1em Arial, sans-serif;color:#ffffff; }
+.wooslider-theme-business .has-featured-image .slide-title { font:bold 24px/1em Arial, sans-serif;color:#ffffff; }
+.wooslider-theme-business .has-featured-image .slide-title a { font:bold 24px/1em Arial, sans-serif;color:#ffffff; }
+#wrapper #loopedSlider.business-slider .content p { font:300 13px/1.5em Arial, sans-serif;color:#cccccc; }
+.wooslider-theme-business .has-featured-image .slide-content p { font:300 13px/1.5em Arial, sans-serif;color:#cccccc; }
+.wooslider-theme-business .has-featured-image .slide-excerpt p { font:300 13px/1.5em Arial, sans-serif;color:#cccccc; }
+.archive_header { font:bold 18px/1em Arial, sans-serif;color:#222222; }
+.archive_header {border-bottom:1px solid #e6e6e6;}
+.archive_header .catrss { display:none; }
+</style>
+
+<!-- Custom Favicon -->
+<link rel="shortcut icon" href="https://machinelearningmastery.com/wp-content/uploads/2019/09/icon-16x16.png">
+<!-- Options Panel Custom CSS -->
+<style type="text/css">
+#logo img {
+   max-width: 100%;
+   height: auto;
+}
+</style>
+
+
+<!-- Woo Shortcodes CSS -->
+
+
+<!-- Custom Stylesheet -->
+
+
+<!-- Theme version -->
+<meta name="generator" content="Canvas 5.9.21">
+<meta name="generator" content="WooFramework 6.2.9">
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-44039733-3', 'auto',{'allowLinker': true });
+ga('require', 'linker');
+ga('linker:autoLink',['samcart.com']);
+ga('send', 'pageview');
+</script>
+<script async="" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/analytics.js"></script><link rel="icon" href="https://machinelearningmastery.com/wp-content/uploads/2016/09/cropped-icon-32x32.png" sizes="32x32">
+<link rel="icon" href="https://machinelearningmastery.com/wp-content/uploads/2016/09/cropped-icon-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://machinelearningmastery.com/wp-content/uploads/2016/09/cropped-icon-180x180.png">
+<meta name="msapplication-TileImage" content="https://machinelearningmastery.com/wp-content/uploads/2016/09/cropped-icon-270x270.png">
+		<style type="text/css" id="wp-custom-css">
+			.display-posts-listing.image-left .listing-item {
+	overflow: hidden; 
+	margin-bottom: 30px;
+	width: 100%;
+}
+
+.display-posts-listing.image-left .image {
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+.display-posts-listing.image-left .attachment-thumbnail {
+	height: auto; 
+	width: auto; 
+	max-width: 50px; 
+	max-height: 50px;
+	border-radius: 50%;
+}
+
+.display-posts-listing.image-left .title {
+	display: block;
+}
+
+.display-posts-listing.image-left .excerpt-dash { 
+	display: none; 
+}
+
+.display-posts-listing.image-left {
+	margin: 0 0 40px 0;
+}		</style>
+		<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>	<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '834324500844861');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=834324500844861&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+	
+	
+<link href="./A Gentle Introduction to the Bayes Optimal Classifier_files/jquery.min.js" rel="preload" as="script"><link href="./A Gentle Introduction to the Bayes Optimal Classifier_files/jquery-migrate.min.js" rel="preload" as="script"><link href="./A Gentle Introduction to the Bayes Optimal Classifier_files/urvanov_syntax_highlighter.min.js" rel="preload" as="script"><link href="./A Gentle Introduction to the Bayes Optimal Classifier_files/front.js" rel="preload" as="script"><link href="./A Gentle Introduction to the Bayes Optimal Classifier_files/third-party.min.js" rel="preload" as="script"><link href="./A Gentle Introduction to the Bayes Optimal Classifier_files/modernizr.min.js" rel="preload" as="script"><link href="./A Gentle Introduction to the Bayes Optimal Classifier_files/general.min.js" rel="preload" as="script"><link href="./A Gentle Introduction to the Bayes Optimal Classifier_files/comment-reply.min.js" rel="preload" as="script"><link href="./A Gentle Introduction to the Bayes Optimal Classifier_files/tex-chtml.js" rel="preload" as="script"><link href="./A Gentle Introduction to the Bayes Optimal Classifier_files/q2w3-fixed-widget.min.js" rel="preload" as="script"><link href="./A Gentle Introduction to the Bayes Optimal Classifier_files/analytics.js" rel="preload" as="script"><link href="./A Gentle Introduction to the Bayes Optimal Classifier_files/embed.js" rel="preload" as="script"><style type="text/css">
+  /* === Form-Specific Styles === */
+  /* stylelint-disable */
+
+  #drip-2211 .drip-content,
+  #drip-2211 .drip-header {
+    background: rgb(116,174,203) !important;
+    background: rgba(116,174,203,0.90) !important;
+  }
+
+  #drip-2211 .drip-content h3 {
+    color: #333333 !important;
+    font-size: 21px !important;
+  }
+
+  #drip-2211 .drip-submit-button {
+    background-color: #333333 !important;
+    font-size: 12px !important;
+  }
+
+  #drip-2211 .drip-submit-button:hover {
+    background-color: #191919 !important;
+  }
+
+  #drip-2211 .drip-submit-button:active {
+    background-color: #000000 !important;
+  }
+
+  #drip-2211 .drip-submit-button:disabled {
+    background-color: #808080 !important;
+  }
+
+  #drip-2211 dl dt,
+  #drip-2211 .drip-content .drip-description,
+  #drip-2211 .drip-content .classic--checkbox,
+  #drip-2211 .drip-errors {
+    font-size: 13px !important;
+  }
+
+  #drip-2211 .drip-text-field,
+  #drip-2211 .drip-radio-buttons,
+  #drip-2211 .drip-dropdown-select {
+    font-size: 14px !important;
+  }
+
+  /* === Reset styles === */
+
+  .drip-tab h1,
+  .drip-tab h2,
+  .drip-tab h3,
+  .drip-tab dl,
+  .drip-tab dt,
+  .drip-tab dd,
+  .drip-tab p,
+  .drip-tab a,
+  .drip-tab .drip-text-field,
+  .drip-tab .drip-radio-buttons,
+  .drip-tab .drip-text-field:focus,
+  .drip-tab .drip-submit-button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    float: none;
+    width: auto;
+    background-image: none;
+    letter-spacing: 0;
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+    -webkit-text-shadow: none !important;
+       -moz-text-shadow: none !important;
+            text-shadow: none !important;
+  }
+
+  .drip-tab a {
+    text-decoration: none;
+  }
+
+  .drip-tab :focus {
+    outline: 0;
+  }
+
+  /* === Clearfix === */
+
+  .drip-clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+  * html .drip-clearfix             { zoom: 1; } /* IE6 */
+  *:first-child+html .drip-clearfix { zoom: 1; } /* IE7 */
+
+  /* === Main Container === */
+
+  .drip-tab-container * {
+    box-sizing: content-box;
+  }
+
+  /* === Content === */
+
+  .drip-tab .drip-content {
+    margin: 0;
+    padding: 5px;
+    width: 330px;
+    position: fixed;
+    font-size: 100%;
+    font: inherit;
+    z-index: 10000;
+    color: #333;
+    vertical-align: baseline;
+    text-align: left;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0px 0px 20px rgba(0,0,0,0.25);
+       -moz-box-shadow: 0px 0px 20px rgba(0,0,0,0.25);
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.25);
+  }
+
+  .drip-tab.bottom .drip-content {
+    bottom: -800px;
+    -webkit-border-radius: 8px 8px 0 0;
+       -moz-border-radius: 8px 8px 0 0;
+            border-radius: 8px 8px 0 0;
+    -webkit-transition: bottom 200ms ease-in;
+       -moz-transition: bottom 200ms ease-in;
+         -o-transition: bottom 200ms ease-in;
+            transition: bottom 200ms ease-in;
+  }
+
+  .drip-tab.bottom.left .drip-content {
+    left: 40px;
+  }
+
+  .drip-tab.bottom.right .drip-content {
+    right: 40px;
+  }
+
+  .drip-tab.image-left .drip-content,
+  .drip-tab.image-right .drip-content {
+    width: 510px;
+  }
+
+  .drip-tab.side .drip-content {
+    top: 10%;
+  }
+
+  .drip-tab.side.right .drip-content {
+    right: -550px;
+    -webkit-border-radius: 8px 0 0 8px;
+       -moz-border-radius: 8px 0 0 8px;
+            border-radius: 8px 0 0 8px;
+    -webkit-transition: right 200ms ease-in;
+       -moz-transition: right 200ms ease-in;
+         -o-transition: right 200ms ease-in;
+            transition: right 200ms ease-in;
+  }
+
+  .drip-tab.side.left .drip-content {
+    left: -550px;
+    -webkit-border-radius: 0 8px 8px 0;
+       -moz-border-radius: 0 8px 8px 0;
+            border-radius: 0 8px 8px 0;
+    -webkit-transition: left 200ms ease-in;
+       -moz-transition: left 200ms ease-in;
+         -o-transition: left 200ms ease-in;
+            transition: left 200ms ease-in;
+  }
+
+  .drip-tab.mobile .drip-content {
+    width: 100% !important;
+    bottom: -800px;
+    left: 0;
+    -webkit-border-radius: 0;
+       -moz-border-radius: 0;
+            border-radius: 0;
+    -webkit-transition: bottom 200ms ease-in;
+       -moz-transition: bottom 200ms ease-in;
+         -o-transition: bottom 200ms ease-in;
+            transition: bottom 200ms ease-in;
+  }
+
+  .drip-tab.drip-scrollable .drip-content {
+    overflow-y: scroll;
+  }
+
+  /* === Header === */
+
+  .drip-tab .drip-header {
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    font-size: 100%;
+    font: inherit;
+    z-index: 10000;
+    color: #333;
+    vertical-align: baseline;
+    text-align: left;
+    -webkit-border-radius: 8px 8px 0 0;
+       -moz-border-radius: 8px 8px 0 0;
+            border-radius: 8px 8px 0 0;
+    -webkit-box-shadow: 0px 10px 28px rgba(0,0,0,0.36);
+       -moz-box-shadow: 0px 10px 28px rgba(0,0,0,0.36);
+            box-shadow: 0px 10px 28px rgba(0,0,0,0.36);
+  }
+
+  .drip-tab.bottom .drip-header {
+    width: 330px;
+    bottom: 0;
+    -webkit-transition: bottom 200ms ease-in;
+       -moz-transition: bottom 200ms ease-in;
+         -o-transition: bottom 200ms ease-in;
+            transition: bottom 200ms ease-in;
+  }
+
+  .drip-tab.bottom .drip-header.drip-hidden {
+    bottom: -800px;
+  }
+
+  .drip-tab.bottom.left .drip-header {
+    left: 40px;
+  }
+
+  .drip-tab.bottom.right .drip-header {
+    right: 40px;
+  }
+
+  .drip-tab.bottom.image-left .drip-header,
+  .drip-tab.bottom.image-right .drip-header {
+    width: 510px;
+  }
+
+  .drip-tab.side .drip-header {
+    width: 330px;
+    top: 10%;
+  }
+
+  .drip-tab.side.right .drip-header {
+    right: -100px;
+    -webkit-transition: right 400ms ease-in;
+       -moz-transition: right 400ms ease-in;
+         -o-transition: right 400ms ease-in;
+            transition: right 400ms ease-in;
+    -webkit-transform: rotate(-90deg) !important;
+       -moz-transform: rotate(-90deg) !important;
+        -ms-transform: rotate(-90deg) !important;
+         -o-transform: rotate(-90deg) !important;
+            transform: rotate(-90deg) !important;
+    -webkit-transform-origin: right center;
+       -moz-transform-origin: right center;
+         -o-transform-origin: right center;
+            transform-origin: right center;
+  }
+
+  .drip-tab.side.right .drip-header.drip-hidden {
+    right: -100px;
+  }
+
+  .drip-tab.side.left .drip-header {
+    left: -100px;
+    -webkit-transition: left 400ms ease-in;
+       -moz-transition: left 400ms ease-in;
+         -o-transition: left 400ms ease-in;
+            transition: left 400ms ease-in;
+    -webkit-transform: rotate(90deg) !important;
+       -moz-transform: rotate(90deg) !important;
+        -ms-transform: rotate(90deg) !important;
+         -o-transform: rotate(90deg) !important;
+            transform: rotate(90deg) !important;
+    -webkit-transform-origin: left center;
+       -moz-transform-origin: left center;
+         -o-transform-origin: left center;
+            transform-origin: left center;
+  }
+
+  .drip-tab.side.left .drip-header.drip-hidden {
+    left: -100px;
+  }
+
+  .drip-tab.mobile .drip-header {
+    width: 100% !important;
+    bottom: 0;
+    left: 0;
+    -webkit-border-radius: 0;
+       -moz-border-radius: 0;
+            border-radius: 0;
+    -webkit-transition: bottom 200ms ease-in;
+       -moz-transition: bottom 200ms ease-in;
+         -o-transition: bottom 200ms ease-in;
+            transition: bottom 200ms ease-in;
+  }
+
+  .drip-tab.mobile .drip-header.drip-hidden {
+    bottom: -300px;
+  }
+
+  /* === Header Toggle === */
+
+  .drip-tab .drip-toggle {
+    display: block;
+    text-decoration: none;
+    padding: 10px 50px 10px 20px; /* extra padding for the arrow */
+  }
+
+  /* === Teaser === */
+
+  .drip-tab .drip-header h2 {
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    color: #fff !important;
+    clear: none !important;
+    letter-spacing: 0 !important;
+    width: auto !important;
+  }
+
+  /* === Arrows === */
+
+  .drip-tab .drip-header span.drip-arrow {
+    display: block;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    top: 17px;
+    right: 32px;
+  }
+
+  /* === Panel === */
+
+  .drip-tab .drip-content > div.drip-panel {
+    padding: 15px 15px 12px;
+    background-color: #fff;
+    -webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+            border-radius: 6px;
+  }
+
+  /* === Content Headings & Paragraphs === */
+
+  .drip-tab .drip-content h3 {
+    display: block;
+    margin: 0 20px 0 0 !important;
+    padding: 0 0 15px 0 !important;
+    line-height: 1.4 !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    color: #4477bd !important;
+    clear: none !important;
+  }
+
+  .drip-tab .drip-content .drip-description {
+    margin: 0;
+    padding: 0 0 20px 0;
+    line-height: 1.6;
+    text-align: left;
+  }
+
+  .drip-tab.image-left .drip-content .drip-description {
+    margin-left: 170px;
+  }
+
+  .drip-tab.image-right .drip-content .drip-description {
+    margin-right: 170px;
+  }
+
+  @media screen and (max-width: 510px) {
+    .drip-tab.image-left .drip-content .drip-description {
+      margin-left: 0; /* 120px; */
+    }
+
+    .drip-tab.image-right .drip-content .drip-description {
+      margin-right: 0; /* 120px; */
+    }
+  }
+
+  .drip-tab .drip-content .drip-description a {
+    text-decoration: underline;
+  }
+
+  .drip-tab .drip-content .drip-description em {
+    font-style: italic;
+  }
+
+  .drip-tab .drip-content .drip-description ul,
+  .drip-tab .drip-content .drip-description ol {
+    list-style-position: outside;
+    margin: 8px 0 8px 30px;
+  }
+
+  .drip-tab .drip-content .drip-description ul li
+  .drip-tab .drip-content .drip-description ol li {
+    padding: 0;
+  }
+
+  .drip-tab .drip-content img.drip-image {
+    margin-bottom: 20px;
+  }
+
+  .drip-tab.image-left .drip-content img.drip-image {
+    float: left;
+    width: 150px;
+  }
+
+  .drip-tab.image-right .drip-content img.drip-image {
+    float: right;
+    width: 150px;
+  }
+
+  @media screen and (max-width: 510px) {
+    .drip-tab.image-left .drip-content img.drip-image {
+      margin-right: 20px;
+      width: 100px;
+    }
+
+    .drip-tab.image-right .drip-content img.drip-image {
+      margin-left: 20px;
+      width: 100px;
+    }
+  }
+
+  .drip-tab .drip-content a.drip-close {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: -1px 0 0 0;
+    float: right;
+    font-size: 28px;
+    line-height: 15px;
+    font-weight: normal;
+    color: #333;
+    opacity: 0.4;
+  }
+
+  .drip-tab .drip-content a.drip-close:hover {
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.6;
+  }
+
+  /* === Content Subscribe Form === */
+
+  .drip-tab form {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .drip-tab dl {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  .drip-tab dl dt {
+    display: block;
+    padding: 0 0 5px 0;
+    font-weight: bold;
+  }
+
+  .drip-tab dl.no-labels dt.label-for-type-text,
+  .drip-tab dl.no-labels dt.label-for-type-dropdown,
+  .drip-tab dl.no-labels dt.label-for-type-email {
+    display: none;
+  }
+
+  .drip-tab dl dd {
+    display: block;
+    padding: 0 0 10px 0;
+  }
+
+  .drip-lightbox input {
+    box-sizing: border-box;
+  }
+
+  .drip-tab .drip-date-field,
+  .drip-tab .drip-text-field {
+    margin: 0 !important;
+    height: 34px !important;
+    width: 100% !important;
+    color: #333 !important;
+    background-color: #fff !important;
+    border: 1px solid #c4c4c4 !important;
+    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.18) !important;
+       -moz-box-shadow: inset 0 0 3px rgba(0,0,0,0.18) !important;
+            box-shadow: inset 0 0 3px rgba(0,0,0,0.18) !important;
+    -webkit-border-radius: 4px !important;
+       -moz-border-radius: 4px !important;
+            border-radius: 4px !important;
+    -webkit-box-sizing: border-box !important;
+       -moz-box-sizing: border-box !important;
+        -ms-box-sizing: border-box !important;
+            box-sizing: border-box !important;
+    background-image: none !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+  }
+
+  .drip-tab .drip-text-field,
+  .drip-tab .drip-dropdown-select select {
+    padding: 6px !important;
+  }
+
+  .drip-tab .drip-text-field::-webkit-input-placeholder { /* WebKit browsers */
+    color: #999999 !important;
+  }
+  .drip-tab .drip-text-field:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #999999 !important;
+  }
+  .drip-tab .drip-text-field::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #999999 !important;
+  }
+  .drip-tab .drip-text-field:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #999999 !important;
+  }
+
+  .drip-tab .drip-text-field:focus {
+    border-color: #a4a4a4 !important;
+    outline: 0;
+    background-image: none;
+    background-color: #fff !important;
+  }
+
+  .drip-tab.mobile .drip-text-field {
+    font-size: 16px;
+  }
+
+  .drip-tab .drip-errors:not(:empty) {
+    padding: 5px 0 0 0;
+    font-weight: normal;
+    color: red;
+  }
+
+  /* RADIOS */
+
+  .drip-tab .drip-radio-buttons,
+  .drip-tab .drip-radio-buttons * {
+    box-sizing: border-box;
+  }
+  .drip-tab .drip-radio-buttons h4 {
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 0 0 3px;
+    padding: 0;
+  }
+
+  .drip-tab .drip-radio-button {
+    width: 100%;
+    display: block;
+    position: relative;
+    margin-bottom: 6px;
+  }
+
+  .drip-tab .drip-radio-button input[type="radio"] {
+    height: 0;
+    width: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .drip-tab .drip-radio-button label {
+    font-size: 15px;
+    padding-left: 30px;
+    color: #262626;
+    white-space: normal;
+    word-break: normal;
+    cursor: pointer;
+  }
+
+  .drip-tab .drip-radio-button label:before {
+    content: "";
+    display: block;
+    background: #f5f5f5;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    border-radius: 9px;
+    border: 1px solid #cccccc;
+    box-sizing: border-box;
+    padding: 1px;
+    transition: background 300ms ease-out, border-color 300ms, border-width 300ms ease-in;
+  }
+  .drip-tab .drip-radio-button label:hover:before {
+    border-color: #000000;
+  }
+
+  .drip-tab .drip-radio-button input[type="radio"]:checked ~ label:before {
+    background-color: #ffffff;
+    border: 5px solid #000000;
+  }
+
+  /* DROPDOWNS */
+
+  /* stylelint-disable */
+
+.drip-tab .drip-dropdown-select h4 {
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 15px;
+  margin: 0 0 3px;
+  padding: 0;
+}
+
+.drip-tab .drip-dropdown-select select {
+  display: block;
+  box-shadow: none;
+  position: relative;
+  border: 1px solid #A8ACB9;
+  outline: none;
+  border-radius: 3px;
+  line-height: inherit;
+  font-family: inherit;
+  color: #262626;
+  transition: border-color 300ms;
+  width: 100%;
+  max-width: 100%; /* useful when width is set to anything other than 100% */
+  box-sizing: border-box;
+
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  /* note: bg image below uses 2 urls. The first is an svg data uri for the arrow
+    icon, and the second is the gradient. for the icon, if you want to change the
+    color, be sure to use `%23` instead of `#`, since it's a url. You can also
+    swap in a different svg icon or an external image reference
+  */
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23262626%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+    linear-gradient(to bottom, #ffffff 0%, #ffffff 100%);
+  background-repeat: no-repeat, repeat;
+  /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
+  background-position: right 12px top 50%, 0 0;
+  /* icon size, then gradient */
+  background-size: 12px auto, 100%;
+}
+
+/* Hide arrow icon in IE browsers */
+.drip-tab .drip-dropdown-select select::-ms-expand {
+  display: none;
+}
+
+/* Hover style */
+.drip-tab .drip-dropdown-select select:hover {
+  border-color: #888;
+}
+
+/* Focus style */
+.drip-tab .drip-dropdown-select select:focus {
+  border-color: #A8ACB9;
+  /* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
+  /* box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+  box-shadow: 0 0 0 3px -moz-mac-focusring;
+  color: #222; */
+  outline: none;
+}
+
+/* Set options to normal weight */
+.drip-tab .drip-dropdown-select select option {
+  font-weight:normal;
+}
+
+/* Support for rtl text, explicit support for Arabic and Hebrew */
+*[dir="rtl"] .drip-tab .drip-dropdown-select select,
+:root:lang(ar) .drip-tab .drip-dropdown-select select,
+:root:lang(iw) .drip-tab .drip-dropdown-select select {
+  background-position: left 12px top 50%, 0 0;
+  padding: .6em .8em .5em 1.4em;
+}
+
+/* Disabled styles */
+.drip-tab .drip-dropdown-select select:disabled,
+.drip-tab .drip-dropdown-select select[aria-disabled=true] {
+  color: graytext;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22graytext%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+    linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+}
+.drip-tab .drip-dropdown-select select:disabled:hover,
+.drip-tab .drip-dropdown-select select[aria-disabled=true] {
+  border-color: #aaa;
+}
+
+/* stylelint-enable */
+
+
+  /* SUBMIT BUTTON */
+
+  .drip-tab .drip-submit-button {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    padding: 3px 12px !important;
+    color: #ffffff !important;
+    font-weight: bold !important;
+    line-height: 1.6 !important;
+    border: 0 !important;
+    -webkit-border-radius: 15px !important;
+       -moz-border-radius: 15px !important;
+            border-radius: 15px !important;
+    cursor: pointer !important;
+    background-image: none !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: auto;
+  }
+
+  .drip-tab .drip-submit-button:hover {
+    background-image: none !important;
+  }
+
+  .drip-tab .drip-submit-button:active {
+    background-image: none !important;
+  }
+
+  /* checkbox */
+  .drip-tab .classic--checkbox.hidden {
+    margin-bottom: -8px;
+    display: none;
+  }
+
+  .drip-tab .classic--checkbox input[type="checkbox"] {
+    display: inline-block;
+    width: auto;
+  }
+
+  /* telephone input */
+  /* stylelint-disable */
+
+.drip-tab .iti + .zenput--checkbox {
+  margin-top: 10px;
+}
+
+.drip-tab .iti {
+  position: relative;
+  display: block;
+}
+
+.drip-tab .iti * {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.drip-tab .iti__hide {
+  display: none;
+}
+
+.drip-tab .iti__v-hide {
+  visibility: hidden;
+}
+
+.drip-tab .iti input,
+.drip-tab .iti input[type=text],
+.drip-tab .iti input[type=tel] {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  padding: 0 0 0 36px;
+  margin: 0 !important;
+}
+
+  .drip-tab .iti input,
+  .drip-tab .iti input[type=text],
+  .drip-tab .iti input[type=tel] {
+    height: 34px;
+    border: 1px solid #c4c4c4 !important;
+    border-radius: 4px !important;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.18) !important;
+  }
+
+.drip-tab .iti__flag-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  padding: 1px;
+}
+
+.drip-tab .iti__selected-flag {
+  z-index: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 6px 0 8px;
+}
+
+.drip-tab .iti__arrow {
+  margin-left: 6px;
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 4px solid #555;
+}
+
+.drip-tab .iti__arrow--up {
+  border-top: none;
+  border-bottom: 4px solid #555;
+}
+
+.drip-tab .iti__country-list {
+  position: absolute;
+  z-index: 2;
+  list-style: none;
+  text-align: left;
+  padding: 0;
+  margin: 0 0 0 -1px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  border: 1px solid #CCC;
+  white-space: nowrap;
+  max-height: 200px;
+  width: 320px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.drip-tab .iti__country-list--dropup {
+  bottom: 100%;
+  margin-bottom: -1px;
+}
+
+@media (max-width: 500px) {
+  .drip-tab .iti__country-list {
+    white-space: normal;
+  }
+}
+
+.drip-tab .iti__flag-box {
+  display: inline-block;
+  width: 20px;
+}
+
+.drip-tab .iti__divider {
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #CCC;
+}
+
+.drip-tab .iti__country {
+  padding: 5px 10px;
+  outline: none;
+}
+
+.drip-tab .iti__dial-code {
+  color: #999;
+}
+
+.drip-tab .iti__country.iti__highlight {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.drip-tab .iti__flag-box,
+.drip-tab .iti__country-name,
+.drip-tab .iti__dial-code {
+  vertical-align: middle;
+}
+
+.drip-tab .iti__flag-box,
+.drip-tab .iti__country-name {
+  margin-right: 6px;
+}
+
+.drip-tab .iti--allow-dropdown input,
+.drip-tab .iti--allow-dropdown input[type=text],
+.drip-tab .iti--allow-dropdown input[type=tel],
+.drip-tab .iti--separate-dial-code input,
+.drip-tab .iti--separate-dial-code input[type=text],
+.drip-tab .iti--separate-dial-code input[type=tel] {
+  padding-right: 6px;
+  padding-left: 52px;
+  margin-left: 0;
+}
+
+.drip-tab .iti--allow-dropdown .iti__flag-container,
+.drip-tab .iti--separate-dial-code .iti__flag-container {
+  right: auto;
+  left: 0;
+}
+
+.drip-tab .iti--allow-dropdown .iti__flag-container:hover {
+  cursor: pointer;
+}
+
+.drip-tab .iti--allow-dropdown .iti__flag-container:hover .iti__selected-flag {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.drip-tab .iti--allow-dropdown input[disabled]+.iti__flag-container:hover,
+.drip-tab .iti--allow-dropdown input[readonly]+.iti__flag-container:hover {
+  cursor: default;
+}
+
+.drip-tab .iti--allow-dropdown input[disabled]+.iti__flag-container:hover .iti__selected-flag,
+.drip-tab .iti--allow-dropdown input[readonly]+.iti__flag-container:hover .iti__selected-flag {
+  background-color: transparent;
+}
+
+.drip-tab .iti--separate-dial-code .iti__selected-flag {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.drip-tab .iti--separate-dial-code .iti__selected-dial-code {
+  margin-left: 6px;
+}
+
+.drip-tab .iti--container {
+  position: absolute;
+  top: -1000px;
+  left: -1000px;
+  z-index: 1060;
+  padding: 1px;
+}
+
+.drip-tab .iti--container:hover {
+  cursor: pointer;
+}
+
+.iti-mobile .drip-tab  .iti--container {
+  top: 30px;
+  bottom: 30px;
+  left: 30px;
+  right: 30px;
+  position: fixed;
+}
+
+.iti-mobile .drip-tab .iti__country-list {
+  max-height: 100%;
+  width: 100%;
+}
+
+.iti-mobile .drip-tab .iti__country {
+  padding: 10px 10px;
+  line-height: 1.5em;
+}
+
+.drip-tab .sms-subtext {
+  margin-top: .75em;
+  font-size: .75em;
+  line-height: 1.4;
+  display: inline-block;
+}
+
+.drip-tab .sms-subtext a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.drip-tab .iti__flag {
+  width: 20px;
+}
+
+.drip-tab .iti__flag.iti__be {
+  width: 18px;
+}
+
+.drip-tab .iti__flag.iti__ch {
+  width: 15px;
+}
+
+.drip-tab .iti__flag.iti__mc {
+  width: 19px;
+}
+
+.drip-tab .iti__flag.iti__ne {
+  width: 18px;
+}
+
+.drip-tab .iti__flag.iti__np {
+  width: 13px;
+}
+
+.drip-tab .iti__flag.iti__va {
+  width: 15px;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  .drip-tab .iti__flag {
+    background-size: 5652px 15px;
+  }
+}
+
+.drip-tab .iti__flag.iti__ac {
+    height: 10px;
+    background-position: 0px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ad {
+    height: 14px;
+    background-position: -22px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ae {
+    height: 10px;
+    background-position: -44px 0px;
+  }
+
+.drip-tab .iti__flag.iti__af {
+    height: 14px;
+    background-position: -66px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ag {
+    height: 14px;
+    background-position: -88px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ai {
+    height: 10px;
+    background-position: -110px 0px;
+  }
+
+.drip-tab .iti__flag.iti__al {
+    height: 15px;
+    background-position: -132px 0px;
+  }
+
+.drip-tab .iti__flag.iti__am {
+    height: 10px;
+    background-position: -154px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ao {
+    height: 14px;
+    background-position: -176px 0px;
+  }
+
+.drip-tab .iti__flag.iti__aq {
+    height: 14px;
+    background-position: -198px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ar {
+    height: 13px;
+    background-position: -220px 0px;
+  }
+
+.drip-tab .iti__flag.iti__as {
+    height: 10px;
+    background-position: -242px 0px;
+  }
+
+.drip-tab .iti__flag.iti__at {
+    height: 14px;
+    background-position: -264px 0px;
+  }
+
+.drip-tab .iti__flag.iti__au {
+    height: 10px;
+    background-position: -286px 0px;
+  }
+
+.drip-tab .iti__flag.iti__aw {
+    height: 14px;
+    background-position: -308px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ax {
+    height: 13px;
+    background-position: -330px 0px;
+  }
+
+.drip-tab .iti__flag.iti__az {
+    height: 10px;
+    background-position: -352px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ba {
+    height: 10px;
+    background-position: -374px 0px;
+  }
+
+.drip-tab .iti__flag.iti__bb {
+    height: 14px;
+    background-position: -396px 0px;
+  }
+
+.drip-tab .iti__flag.iti__bd {
+    height: 12px;
+    background-position: -418px 0px;
+  }
+
+.drip-tab .iti__flag.iti__be {
+    height: 15px;
+    background-position: -440px 0px;
+  }
+
+.drip-tab .iti__flag.iti__bf {
+    height: 14px;
+    background-position: -460px 0px;
+  }
+
+.drip-tab .iti__flag.iti__bg {
+    height: 12px;
+    background-position: -482px 0px;
+  }
+
+.drip-tab .iti__flag.iti__bh {
+    height: 12px;
+    background-position: -504px 0px;
+  }
+
+.drip-tab .iti__flag.iti__bi {
+    height: 12px;
+    background-position: -526px 0px;
+  }
+
+.drip-tab .iti__flag.iti__bj {
+    height: 14px;
+    background-position: -548px 0px;
+  }
+
+.drip-tab .iti__flag.iti__bl {
+    height: 14px;
+    background-position: -570px 0px;
+  }
+
+.drip-tab .iti__flag.iti__bm {
+    height: 10px;
+    background-position: -592px 0px;
+  }
+
+.drip-tab .iti__flag.iti__bn {
+    height: 10px;
+    background-position: -614px 0px;
+  }
+
+.drip-tab .iti__flag.iti__bo {
+    height: 14px;
+    background-position: -636px 0px;
+  }
+
+.drip-tab .iti__flag.iti__bq {
+    height: 14px;
+    background-position: -658px 0px;
+  }
+
+.drip-tab .iti__flag.iti__br {
+    height: 14px;
+    background-position: -680px 0px;
+  }
+
+.drip-tab .iti__flag.iti__bs {
+    height: 10px;
+    background-position: -702px 0px;
+  }
+
+.drip-tab .iti__flag.iti__bt {
+    height: 14px;
+    background-position: -724px 0px;
+  }
+
+.drip-tab .iti__flag.iti__bv {
+    height: 15px;
+    background-position: -746px 0px;
+  }
+
+.drip-tab .iti__flag.iti__bw {
+    height: 14px;
+    background-position: -768px 0px;
+  }
+
+.drip-tab .iti__flag.iti__by {
+    height: 10px;
+    background-position: -790px 0px;
+  }
+
+.drip-tab .iti__flag.iti__bz {
+    height: 14px;
+    background-position: -812px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ca {
+    height: 10px;
+    background-position: -834px 0px;
+  }
+
+.drip-tab .iti__flag.iti__cc {
+    height: 10px;
+    background-position: -856px 0px;
+  }
+
+.drip-tab .iti__flag.iti__cd {
+    height: 15px;
+    background-position: -878px 0px;
+  }
+
+.drip-tab .iti__flag.iti__cf {
+    height: 14px;
+    background-position: -900px 0px;
+  }
+
+.drip-tab .iti__flag.iti__cg {
+    height: 14px;
+    background-position: -922px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ch {
+    height: 15px;
+    background-position: -944px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ci {
+    height: 14px;
+    background-position: -961px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ck {
+    height: 10px;
+    background-position: -983px 0px;
+  }
+
+.drip-tab .iti__flag.iti__cl {
+    height: 14px;
+    background-position: -1005px 0px;
+  }
+
+.drip-tab .iti__flag.iti__cm {
+    height: 14px;
+    background-position: -1027px 0px;
+  }
+
+.drip-tab .iti__flag.iti__cn {
+    height: 14px;
+    background-position: -1049px 0px;
+  }
+
+.drip-tab .iti__flag.iti__co {
+    height: 14px;
+    background-position: -1071px 0px;
+  }
+
+.drip-tab .iti__flag.iti__cp {
+    height: 14px;
+    background-position: -1093px 0px;
+  }
+
+.drip-tab .iti__flag.iti__cr {
+    height: 12px;
+    background-position: -1115px 0px;
+  }
+
+.drip-tab .iti__flag.iti__cu {
+    height: 10px;
+    background-position: -1137px 0px;
+  }
+
+.drip-tab .iti__flag.iti__cv {
+    height: 12px;
+    background-position: -1159px 0px;
+  }
+
+.drip-tab .iti__flag.iti__cw {
+    height: 14px;
+    background-position: -1181px 0px;
+  }
+
+.drip-tab .iti__flag.iti__cx {
+    height: 10px;
+    background-position: -1203px 0px;
+  }
+
+.drip-tab .iti__flag.iti__cy {
+    height: 14px;
+    background-position: -1225px 0px;
+  }
+
+.drip-tab .iti__flag.iti__cz {
+    height: 14px;
+    background-position: -1247px 0px;
+  }
+
+.drip-tab .iti__flag.iti__de {
+    height: 12px;
+    background-position: -1269px 0px;
+  }
+
+.drip-tab .iti__flag.iti__dg {
+    height: 10px;
+    background-position: -1291px 0px;
+  }
+
+.drip-tab .iti__flag.iti__dj {
+    height: 14px;
+    background-position: -1313px 0px;
+  }
+
+.drip-tab .iti__flag.iti__dk {
+    height: 15px;
+    background-position: -1335px 0px;
+  }
+
+.drip-tab .iti__flag.iti__dm {
+    height: 10px;
+    background-position: -1357px 0px;
+  }
+
+.drip-tab .iti__flag.iti__do {
+    height: 14px;
+    background-position: -1379px 0px;
+  }
+
+.drip-tab .iti__flag.iti__dz {
+    height: 14px;
+    background-position: -1401px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ea {
+    height: 14px;
+    background-position: -1423px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ec {
+    height: 14px;
+    background-position: -1445px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ee {
+    height: 13px;
+    background-position: -1467px 0px;
+  }
+
+.drip-tab .iti__flag.iti__eg {
+    height: 14px;
+    background-position: -1489px 0px;
+  }
+
+.drip-tab .iti__flag.iti__eh {
+    height: 10px;
+    background-position: -1511px 0px;
+  }
+
+.drip-tab .iti__flag.iti__er {
+    height: 10px;
+    background-position: -1533px 0px;
+  }
+
+.drip-tab .iti__flag.iti__es {
+    height: 14px;
+    background-position: -1555px 0px;
+  }
+
+.drip-tab .iti__flag.iti__et {
+    height: 10px;
+    background-position: -1577px 0px;
+  }
+
+.drip-tab .iti__flag.iti__eu {
+    height: 14px;
+    background-position: -1599px 0px;
+  }
+
+.drip-tab .iti__flag.iti__fi {
+    height: 12px;
+    background-position: -1621px 0px;
+  }
+
+.drip-tab .iti__flag.iti__fj {
+    height: 10px;
+    background-position: -1643px 0px;
+  }
+
+.drip-tab .iti__flag.iti__fk {
+    height: 10px;
+    background-position: -1665px 0px;
+  }
+
+.drip-tab .iti__flag.iti__fm {
+    height: 11px;
+    background-position: -1687px 0px;
+  }
+
+.drip-tab .iti__flag.iti__fo {
+    height: 15px;
+    background-position: -1709px 0px;
+  }
+
+.drip-tab .iti__flag.iti__fr {
+    height: 14px;
+    background-position: -1731px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ga {
+    height: 15px;
+    background-position: -1753px 0px;
+  }
+
+.drip-tab .iti__flag.iti__gb {
+    height: 10px;
+    background-position: -1775px 0px;
+  }
+
+.drip-tab .iti__flag.iti__gd {
+    height: 12px;
+    background-position: -1797px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ge {
+    height: 14px;
+    background-position: -1819px 0px;
+  }
+
+.drip-tab .iti__flag.iti__gf {
+    height: 14px;
+    background-position: -1841px 0px;
+  }
+
+.drip-tab .iti__flag.iti__gg {
+    height: 14px;
+    background-position: -1863px 0px;
+  }
+
+.drip-tab .iti__flag.iti__gh {
+    height: 14px;
+    background-position: -1885px 0px;
+  }
+
+.drip-tab .iti__flag.iti__gi {
+    height: 10px;
+    background-position: -1907px 0px;
+  }
+
+.drip-tab .iti__flag.iti__gl {
+    height: 14px;
+    background-position: -1929px 0px;
+  }
+
+.drip-tab .iti__flag.iti__gm {
+    height: 14px;
+    background-position: -1951px 0px;
+  }
+
+.drip-tab .iti__flag.iti__gn {
+    height: 14px;
+    background-position: -1973px 0px;
+  }
+
+.drip-tab .iti__flag.iti__gp {
+    height: 14px;
+    background-position: -1995px 0px;
+  }
+
+.drip-tab .iti__flag.iti__gq {
+    height: 14px;
+    background-position: -2017px 0px;
+  }
+
+.drip-tab .iti__flag.iti__gr {
+    height: 14px;
+    background-position: -2039px 0px;
+  }
+
+.drip-tab .iti__flag.iti__gs {
+    height: 10px;
+    background-position: -2061px 0px;
+  }
+
+.drip-tab .iti__flag.iti__gt {
+    height: 13px;
+    background-position: -2083px 0px;
+  }
+
+.drip-tab .iti__flag.iti__gu {
+    height: 11px;
+    background-position: -2105px 0px;
+  }
+
+.drip-tab .iti__flag.iti__gw {
+    height: 10px;
+    background-position: -2127px 0px;
+  }
+
+.drip-tab .iti__flag.iti__gy {
+    height: 12px;
+    background-position: -2149px 0px;
+  }
+
+.drip-tab .iti__flag.iti__hk {
+    height: 14px;
+    background-position: -2171px 0px;
+  }
+
+.drip-tab .iti__flag.iti__hm {
+    height: 10px;
+    background-position: -2193px 0px;
+  }
+
+.drip-tab .iti__flag.iti__hn {
+    height: 10px;
+    background-position: -2215px 0px;
+  }
+
+.drip-tab .iti__flag.iti__hr {
+    height: 10px;
+    background-position: -2237px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ht {
+    height: 12px;
+    background-position: -2259px 0px;
+  }
+
+.drip-tab .iti__flag.iti__hu {
+    height: 10px;
+    background-position: -2281px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ic {
+    height: 14px;
+    background-position: -2303px 0px;
+  }
+
+.drip-tab .iti__flag.iti__id {
+    height: 14px;
+    background-position: -2325px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ie {
+    height: 10px;
+    background-position: -2347px 0px;
+  }
+
+.drip-tab .iti__flag.iti__il {
+    height: 15px;
+    background-position: -2369px 0px;
+  }
+
+.drip-tab .iti__flag.iti__im {
+    height: 10px;
+    background-position: -2391px 0px;
+  }
+
+.drip-tab .iti__flag.iti__in {
+    height: 14px;
+    background-position: -2413px 0px;
+  }
+
+.drip-tab .iti__flag.iti__io {
+    height: 10px;
+    background-position: -2435px 0px;
+  }
+
+.drip-tab .iti__flag.iti__iq {
+    height: 14px;
+    background-position: -2457px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ir {
+    height: 12px;
+    background-position: -2479px 0px;
+  }
+
+.drip-tab .iti__flag.iti__is {
+    height: 15px;
+    background-position: -2501px 0px;
+  }
+
+.drip-tab .iti__flag.iti__it {
+    height: 14px;
+    background-position: -2523px 0px;
+  }
+
+.drip-tab .iti__flag.iti__je {
+    height: 12px;
+    background-position: -2545px 0px;
+  }
+
+.drip-tab .iti__flag.iti__jm {
+    height: 10px;
+    background-position: -2567px 0px;
+  }
+
+.drip-tab .iti__flag.iti__jo {
+    height: 10px;
+    background-position: -2589px 0px;
+  }
+
+.drip-tab .iti__flag.iti__jp {
+    height: 14px;
+    background-position: -2611px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ke {
+    height: 14px;
+    background-position: -2633px 0px;
+  }
+
+.drip-tab .iti__flag.iti__kg {
+    height: 12px;
+    background-position: -2655px 0px;
+  }
+
+.drip-tab .iti__flag.iti__kh {
+    height: 13px;
+    background-position: -2677px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ki {
+    height: 10px;
+    background-position: -2699px 0px;
+  }
+
+.drip-tab .iti__flag.iti__km {
+    height: 12px;
+    background-position: -2721px 0px;
+  }
+
+.drip-tab .iti__flag.iti__kn {
+    height: 14px;
+    background-position: -2743px 0px;
+  }
+
+.drip-tab .iti__flag.iti__kp {
+    height: 10px;
+    background-position: -2765px 0px;
+  }
+
+.drip-tab .iti__flag.iti__kr {
+    height: 14px;
+    background-position: -2787px 0px;
+  }
+
+.drip-tab .iti__flag.iti__kw {
+    height: 10px;
+    background-position: -2809px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ky {
+    height: 10px;
+    background-position: -2831px 0px;
+  }
+
+.drip-tab .iti__flag.iti__kz {
+    height: 10px;
+    background-position: -2853px 0px;
+  }
+
+.drip-tab .iti__flag.iti__la {
+    height: 14px;
+    background-position: -2875px 0px;
+  }
+
+.drip-tab .iti__flag.iti__lb {
+    height: 14px;
+    background-position: -2897px 0px;
+  }
+
+.drip-tab .iti__flag.iti__lc {
+    height: 10px;
+    background-position: -2919px 0px;
+  }
+
+.drip-tab .iti__flag.iti__li {
+    height: 12px;
+    background-position: -2941px 0px;
+  }
+
+.drip-tab .iti__flag.iti__lk {
+    height: 10px;
+    background-position: -2963px 0px;
+  }
+
+.drip-tab .iti__flag.iti__lr {
+    height: 11px;
+    background-position: -2985px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ls {
+    height: 14px;
+    background-position: -3007px 0px;
+  }
+
+.drip-tab .iti__flag.iti__lt {
+    height: 12px;
+    background-position: -3029px 0px;
+  }
+
+.drip-tab .iti__flag.iti__lu {
+    height: 12px;
+    background-position: -3051px 0px;
+  }
+
+.drip-tab .iti__flag.iti__lv {
+    height: 10px;
+    background-position: -3073px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ly {
+    height: 10px;
+    background-position: -3095px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ma {
+    height: 14px;
+    background-position: -3117px 0px;
+  }
+
+.drip-tab .iti__flag.iti__mc {
+    height: 15px;
+    background-position: -3139px 0px;
+  }
+
+.drip-tab .iti__flag.iti__md {
+    height: 10px;
+    background-position: -3160px 0px;
+  }
+
+.drip-tab .iti__flag.iti__me {
+    height: 10px;
+    background-position: -3182px 0px;
+  }
+
+.drip-tab .iti__flag.iti__mf {
+    height: 14px;
+    background-position: -3204px 0px;
+  }
+
+.drip-tab .iti__flag.iti__mg {
+    height: 14px;
+    background-position: -3226px 0px;
+  }
+
+.drip-tab .iti__flag.iti__mh {
+    height: 11px;
+    background-position: -3248px 0px;
+  }
+
+.drip-tab .iti__flag.iti__mk {
+    height: 10px;
+    background-position: -3270px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ml {
+    height: 14px;
+    background-position: -3292px 0px;
+  }
+
+.drip-tab .iti__flag.iti__mm {
+    height: 14px;
+    background-position: -3314px 0px;
+  }
+
+.drip-tab .iti__flag.iti__mn {
+    height: 10px;
+    background-position: -3336px 0px;
+  }
+
+.drip-tab .iti__flag.iti__mo {
+    height: 14px;
+    background-position: -3358px 0px;
+  }
+
+.drip-tab .iti__flag.iti__mp {
+    height: 10px;
+    background-position: -3380px 0px;
+  }
+
+.drip-tab .iti__flag.iti__mq {
+    height: 14px;
+    background-position: -3402px 0px;
+  }
+
+.drip-tab .iti__flag.iti__mr {
+    height: 14px;
+    background-position: -3424px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ms {
+    height: 10px;
+    background-position: -3446px 0px;
+  }
+
+.drip-tab .iti__flag.iti__mt {
+    height: 14px;
+    background-position: -3468px 0px;
+  }
+
+.drip-tab .iti__flag.iti__mu {
+    height: 14px;
+    background-position: -3490px 0px;
+  }
+
+.drip-tab .iti__flag.iti__mv {
+    height: 14px;
+    background-position: -3512px 0px;
+  }
+
+.drip-tab .iti__flag.iti__mw {
+    height: 14px;
+    background-position: -3534px 0px;
+  }
+
+.drip-tab .iti__flag.iti__mx {
+    height: 12px;
+    background-position: -3556px 0px;
+  }
+
+.drip-tab .iti__flag.iti__my {
+    height: 10px;
+    background-position: -3578px 0px;
+  }
+
+.drip-tab .iti__flag.iti__mz {
+    height: 14px;
+    background-position: -3600px 0px;
+  }
+
+.drip-tab .iti__flag.iti__na {
+    height: 14px;
+    background-position: -3622px 0px;
+  }
+
+.drip-tab .iti__flag.iti__nc {
+    height: 10px;
+    background-position: -3644px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ne {
+    height: 15px;
+    background-position: -3666px 0px;
+  }
+
+.drip-tab .iti__flag.iti__nf {
+    height: 10px;
+    background-position: -3686px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ng {
+    height: 10px;
+    background-position: -3708px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ni {
+    height: 12px;
+    background-position: -3730px 0px;
+  }
+
+.drip-tab .iti__flag.iti__nl {
+    height: 14px;
+    background-position: -3752px 0px;
+  }
+
+.drip-tab .iti__flag.iti__no {
+    height: 15px;
+    background-position: -3774px 0px;
+  }
+
+.drip-tab .iti__flag.iti__np {
+    height: 15px;
+    background-position: -3796px 0px;
+  }
+
+.drip-tab .iti__flag.iti__nr {
+    height: 10px;
+    background-position: -3811px 0px;
+  }
+
+.drip-tab .iti__flag.iti__nu {
+    height: 10px;
+    background-position: -3833px 0px;
+  }
+
+.drip-tab .iti__flag.iti__nz {
+    height: 10px;
+    background-position: -3855px 0px;
+  }
+
+.drip-tab .iti__flag.iti__om {
+    height: 10px;
+    background-position: -3877px 0px;
+  }
+
+.drip-tab .iti__flag.iti__pa {
+    height: 14px;
+    background-position: -3899px 0px;
+  }
+
+.drip-tab .iti__flag.iti__pe {
+    height: 14px;
+    background-position: -3921px 0px;
+  }
+
+.drip-tab .iti__flag.iti__pf {
+    height: 14px;
+    background-position: -3943px 0px;
+  }
+
+.drip-tab .iti__flag.iti__pg {
+    height: 15px;
+    background-position: -3965px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ph {
+    height: 10px;
+    background-position: -3987px 0px;
+  }
+
+.drip-tab .iti__flag.iti__pk {
+    height: 14px;
+    background-position: -4009px 0px;
+  }
+
+.drip-tab .iti__flag.iti__pl {
+    height: 13px;
+    background-position: -4031px 0px;
+  }
+
+.drip-tab .iti__flag.iti__pm {
+    height: 14px;
+    background-position: -4053px 0px;
+  }
+
+.drip-tab .iti__flag.iti__pn {
+    height: 10px;
+    background-position: -4075px 0px;
+  }
+
+.drip-tab .iti__flag.iti__pr {
+    height: 14px;
+    background-position: -4097px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ps {
+    height: 10px;
+    background-position: -4119px 0px;
+  }
+
+.drip-tab .iti__flag.iti__pt {
+    height: 14px;
+    background-position: -4141px 0px;
+  }
+
+.drip-tab .iti__flag.iti__pw {
+    height: 13px;
+    background-position: -4163px 0px;
+  }
+
+.drip-tab .iti__flag.iti__py {
+    height: 11px;
+    background-position: -4185px 0px;
+  }
+
+.drip-tab .iti__flag.iti__qa {
+    height: 8px;
+    background-position: -4207px 0px;
+  }
+
+.drip-tab .iti__flag.iti__re {
+    height: 14px;
+    background-position: -4229px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ro {
+    height: 14px;
+    background-position: -4251px 0px;
+  }
+
+.drip-tab .iti__flag.iti__rs {
+    height: 14px;
+    background-position: -4273px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ru {
+    height: 14px;
+    background-position: -4295px 0px;
+  }
+
+.drip-tab .iti__flag.iti__rw {
+    height: 14px;
+    background-position: -4317px 0px;
+  }
+
+.drip-tab .iti__flag.iti__sa {
+    height: 14px;
+    background-position: -4339px 0px;
+  }
+
+.drip-tab .iti__flag.iti__sb {
+    height: 10px;
+    background-position: -4361px 0px;
+  }
+
+.drip-tab .iti__flag.iti__sc {
+    height: 10px;
+    background-position: -4383px 0px;
+  }
+
+.drip-tab .iti__flag.iti__sd {
+    height: 10px;
+    background-position: -4405px 0px;
+  }
+
+.drip-tab .iti__flag.iti__se {
+    height: 13px;
+    background-position: -4427px 0px;
+  }
+
+.drip-tab .iti__flag.iti__sg {
+    height: 14px;
+    background-position: -4449px 0px;
+  }
+
+.drip-tab .iti__flag.iti__sh {
+    height: 10px;
+    background-position: -4471px 0px;
+  }
+
+.drip-tab .iti__flag.iti__si {
+    height: 10px;
+    background-position: -4493px 0px;
+  }
+
+.drip-tab .iti__flag.iti__sj {
+    height: 15px;
+    background-position: -4515px 0px;
+  }
+
+.drip-tab .iti__flag.iti__sk {
+    height: 14px;
+    background-position: -4537px 0px;
+  }
+
+.drip-tab .iti__flag.iti__sl {
+    height: 14px;
+    background-position: -4559px 0px;
+  }
+
+.drip-tab .iti__flag.iti__sm {
+    height: 15px;
+    background-position: -4581px 0px;
+  }
+
+.drip-tab .iti__flag.iti__sn {
+    height: 14px;
+    background-position: -4603px 0px;
+  }
+
+.drip-tab .iti__flag.iti__so {
+    height: 14px;
+    background-position: -4625px 0px;
+  }
+
+.drip-tab .iti__flag.iti__sr {
+    height: 14px;
+    background-position: -4647px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ss {
+    height: 10px;
+    background-position: -4669px 0px;
+  }
+
+.drip-tab .iti__flag.iti__st {
+    height: 10px;
+    background-position: -4691px 0px;
+  }
+
+.drip-tab .iti__flag.iti__sv {
+    height: 12px;
+    background-position: -4713px 0px;
+  }
+
+.drip-tab .iti__flag.iti__sx {
+    height: 14px;
+    background-position: -4735px 0px;
+  }
+
+.drip-tab .iti__flag.iti__sy {
+    height: 14px;
+    background-position: -4757px 0px;
+  }
+
+.drip-tab .iti__flag.iti__sz {
+    height: 14px;
+    background-position: -4779px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ta {
+    height: 10px;
+    background-position: -4801px 0px;
+  }
+
+.drip-tab .iti__flag.iti__tc {
+    height: 10px;
+    background-position: -4823px 0px;
+  }
+
+.drip-tab .iti__flag.iti__td {
+    height: 14px;
+    background-position: -4845px 0px;
+  }
+
+.drip-tab .iti__flag.iti__tf {
+    height: 14px;
+    background-position: -4867px 0px;
+  }
+
+.drip-tab .iti__flag.iti__tg {
+    height: 13px;
+    background-position: -4889px 0px;
+  }
+
+.drip-tab .iti__flag.iti__th {
+    height: 14px;
+    background-position: -4911px 0px;
+  }
+
+.drip-tab .iti__flag.iti__tj {
+    height: 10px;
+    background-position: -4933px 0px;
+  }
+
+.drip-tab .iti__flag.iti__tk {
+    height: 10px;
+    background-position: -4955px 0px;
+  }
+
+.drip-tab .iti__flag.iti__tl {
+    height: 10px;
+    background-position: -4977px 0px;
+  }
+
+.drip-tab .iti__flag.iti__tm {
+    height: 14px;
+    background-position: -4999px 0px;
+  }
+
+.drip-tab .iti__flag.iti__tn {
+    height: 14px;
+    background-position: -5021px 0px;
+  }
+
+.drip-tab .iti__flag.iti__to {
+    height: 10px;
+    background-position: -5043px 0px;
+  }
+
+.drip-tab .iti__flag.iti__tr {
+    height: 14px;
+    background-position: -5065px 0px;
+  }
+
+.drip-tab .iti__flag.iti__tt {
+    height: 12px;
+    background-position: -5087px 0px;
+  }
+
+.drip-tab .iti__flag.iti__tv {
+    height: 10px;
+    background-position: -5109px 0px;
+  }
+
+.drip-tab .iti__flag.iti__tw {
+    height: 14px;
+    background-position: -5131px 0px;
+  }
+
+.drip-tab .iti__flag.iti__tz {
+    height: 14px;
+    background-position: -5153px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ua {
+    height: 14px;
+    background-position: -5175px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ug {
+    height: 14px;
+    background-position: -5197px 0px;
+  }
+
+.drip-tab .iti__flag.iti__um {
+    height: 11px;
+    background-position: -5219px 0px;
+  }
+
+.drip-tab .iti__flag.iti__un {
+    height: 14px;
+    background-position: -5241px 0px;
+  }
+
+.drip-tab .iti__flag.iti__us {
+    height: 11px;
+    background-position: -5263px 0px;
+  }
+
+.drip-tab .iti__flag.iti__uy {
+    height: 14px;
+    background-position: -5285px 0px;
+  }
+
+.drip-tab .iti__flag.iti__uz {
+    height: 10px;
+    background-position: -5307px 0px;
+  }
+
+.drip-tab .iti__flag.iti__va {
+    height: 15px;
+    background-position: -5329px 0px;
+  }
+
+.drip-tab .iti__flag.iti__vc {
+    height: 14px;
+    background-position: -5346px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ve {
+    height: 14px;
+    background-position: -5368px 0px;
+  }
+
+.drip-tab .iti__flag.iti__vg {
+    height: 10px;
+    background-position: -5390px 0px;
+  }
+
+.drip-tab .iti__flag.iti__vi {
+    height: 14px;
+    background-position: -5412px 0px;
+  }
+
+.drip-tab .iti__flag.iti__vn {
+    height: 14px;
+    background-position: -5434px 0px;
+  }
+
+.drip-tab .iti__flag.iti__vu {
+    height: 12px;
+    background-position: -5456px 0px;
+  }
+
+.drip-tab .iti__flag.iti__wf {
+    height: 14px;
+    background-position: -5478px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ws {
+    height: 10px;
+    background-position: -5500px 0px;
+  }
+
+.drip-tab .iti__flag.iti__xk {
+    height: 15px;
+    background-position: -5522px 0px;
+  }
+
+.drip-tab .iti__flag.iti__ye {
+    height: 14px;
+    background-position: -5544px 0px;
+  }
+
+.drip-tab .iti__flag.iti__yt {
+    height: 14px;
+    background-position: -5566px 0px;
+  }
+
+.drip-tab .iti__flag.iti__za {
+    height: 14px;
+    background-position: -5588px 0px;
+  }
+
+.drip-tab .iti__flag.iti__zm {
+    height: 14px;
+    background-position: -5610px 0px;
+  }
+
+.drip-tab .iti__flag.iti__zw {
+    height: 10px;
+    background-position: -5632px 0px;
+  }
+
+.drip-tab .iti__flag {
+    height: 15px;
+    box-shadow: 0px 0px 1px 0px #888;
+    background-image: url("flags.png");
+    background-repeat: no-repeat;
+    background-position: 20px 0;
+  }
+
+.drip-tab .iti__flag.iti__np {
+  background-color: transparent;
+}
+
+.drip-tab .iti__flag {
+  background-image: url("https://d14jnfavjicsbe.cloudfront.net/images/client/flags.png");
+};
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .drip-tab .iti__flag {
+    background-image: url("https://d14jnfavjicsbe.cloudfront.net/images/client/flags@2x.png");
+  }
+}
+
+/* stylelint-enable */
+
+
+  /* preview settings */
+  body.after-submit-preview .drip-panel:not(.drip-success) {
+    display: none !important;
+  }
+  body.after-submit-preview .drip-success {
+    display: block !important;
+  }
+
+  /* stylelint-enable */
+
+</style><style type="text/css">.CtxtMenu_InfoClose {  top:.2em; right:.2em;}
+.CtxtMenu_InfoContent {  overflow:auto; text-align:left; font-size:80%;  padding:.4em .6em; border:1px inset; margin:1em 0px;  max-height:20em; max-width:30em; background-color:#EEEEEE;  white-space:normal;}
+.CtxtMenu_Info.CtxtMenu_MousePost {outline:none;}
+.CtxtMenu_Info {  position:fixed; left:50%; width:auto; text-align:center;  border:3px outset; padding:1em 2em; background-color:#DDDDDD;  color:black;  cursor:default; font-family:message-box; font-size:120%;  font-style:normal; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 15px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius:15px;               /* Safari and Chrome */  -moz-border-radius:15px;                  /* Firefox */  -khtml-border-radius:15px;                /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color="gray", Positive="true"); /* IE */}
+</style><style type="text/css">.CtxtMenu_MenuClose {  position:absolute;  cursor:pointer;  display:inline-block;  border:2px solid #AAA;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  font-family: "Courier New", Courier;  font-size:24px;  color:#F0F0F0}
+.CtxtMenu_MenuClose span {  display:block; background-color:#AAA; border:1.5px solid;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  line-height:0;  padding:8px 0 6px     /* may need to be browser-specific */}
+.CtxtMenu_MenuClose:hover {  color:white!important;  border:2px solid #CCC!important}
+.CtxtMenu_MenuClose:hover span {  background-color:#CCC!important}
+.CtxtMenu_MenuClose:hover:focus {  outline:none}
+</style><style type="text/css">.CtxtMenu_Menu {  position:absolute;  background-color:white;  color:black;  width:auto; padding:5px 0px;  border:1px solid #CCCCCC; margin:0; cursor:default;  font: menu; text-align:left; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 5px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius: 5px;             /* Safari and Chrome */  -moz-border-radius: 5px;                /* Firefox */  -khtml-border-radius: 5px;              /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */}
+.CtxtMenu_MenuItem {  padding: 1px 2em;  background:transparent;}
+.CtxtMenu_MenuArrow {  position:absolute; right:.5em; padding-top:.25em; color:#666666;  font-family: null; font-size: .75em}
+.CtxtMenu_MenuActive .CtxtMenu_MenuArrow {color:white}
+.CtxtMenu_MenuArrow.CtxtMenu_RTL {left:.5em; right:auto}
+.CtxtMenu_MenuCheck {  position:absolute; left:.7em;  font-family: null}
+.CtxtMenu_MenuCheck.CtxtMenu_RTL { right:.7em; left:auto }
+.CtxtMenu_MenuRadioCheck {  position:absolute; left: .7em;}
+.CtxtMenu_MenuRadioCheck.CtxtMenu_RTL {  right: .7em; left:auto}
+.CtxtMenu_MenuInputBox {  padding-left: 1em; right:.5em; color:#666666;  font-family: null;}
+.CtxtMenu_MenuInputBox.CtxtMenu_RTL {  left: .1em;}
+.CtxtMenu_MenuComboBox {  left:.1em; padding-bottom:.5em;}
+.CtxtMenu_MenuSlider {  left: .1em;}
+.CtxtMenu_SliderValue {  position:absolute; right:.1em; padding-top:.25em; color:#333333;  font-size: .75em}
+.CtxtMenu_SliderBar {  outline: none; background: #d3d3d3}
+.CtxtMenu_MenuLabel {  padding: 1px 2em 3px 1.33em;  font-style:italic}
+.CtxtMenu_MenuRule {  border-top: 1px solid #DDDDDD;  margin: 4px 3px;}
+.CtxtMenu_MenuDisabled {  color:GrayText}
+.CtxtMenu_MenuActive {  background-color: #606872;  color: white;}
+.CtxtMenu_MenuDisabled:focus {  background-color: #E8E8E8}
+.CtxtMenu_MenuLabel:focus {  background-color: #E8E8E8}
+.CtxtMenu_ContextMenu:focus {  outline:none}
+.CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus {  outline:none}
+.CtxtMenu_SelectionMenu {  position:relative; float:left;  border-bottom: none; -webkit-box-shadow:none; -webkit-border-radius:0px; }
+.CtxtMenu_SelectionItem {  padding-right: 1em;}
+.CtxtMenu_Selection {  right: 40%; width:50%; }
+.CtxtMenu_SelectionBox {  padding: 0em; max-height:20em; max-width: none;  background-color:#FFFFFF;}
+.CtxtMenu_SelectionDivider {  clear: both; border-top: 2px solid #000000;}
+.CtxtMenu_Menu .CtxtMenu_MenuClose {  top:-10px; left:-10px}
+</style><style id="MJX-CHTML-styles">
+mjx-container[jax="CHTML"] {
+  line-height: 0;
+}
+
+mjx-container [space="1"] {
+  margin-left: .111em;
+}
+
+mjx-container [space="2"] {
+  margin-left: .167em;
+}
+
+mjx-container [space="3"] {
+  margin-left: .222em;
+}
+
+mjx-container [space="4"] {
+  margin-left: .278em;
+}
+
+mjx-container [space="5"] {
+  margin-left: .333em;
+}
+
+mjx-container [rspace="1"] {
+  margin-right: .111em;
+}
+
+mjx-container [rspace="2"] {
+  margin-right: .167em;
+}
+
+mjx-container [rspace="3"] {
+  margin-right: .222em;
+}
+
+mjx-container [rspace="4"] {
+  margin-right: .278em;
+}
+
+mjx-container [rspace="5"] {
+  margin-right: .333em;
+}
+
+mjx-container [size="s"] {
+  font-size: 70.7%;
+}
+
+mjx-container [size="ss"] {
+  font-size: 50%;
+}
+
+mjx-container [size="Tn"] {
+  font-size: 60%;
+}
+
+mjx-container [size="sm"] {
+  font-size: 85%;
+}
+
+mjx-container [size="lg"] {
+  font-size: 120%;
+}
+
+mjx-container [size="Lg"] {
+  font-size: 144%;
+}
+
+mjx-container [size="LG"] {
+  font-size: 173%;
+}
+
+mjx-container [size="hg"] {
+  font-size: 207%;
+}
+
+mjx-container [size="HG"] {
+  font-size: 249%;
+}
+
+mjx-container [width="full"] {
+  width: 100%;
+}
+
+mjx-box {
+  display: inline-block;
+}
+
+mjx-block {
+  display: block;
+}
+
+mjx-itable {
+  display: inline-table;
+}
+
+mjx-row {
+  display: table-row;
+}
+
+mjx-row > * {
+  display: table-cell;
+}
+
+mjx-mtext {
+  display: inline-block;
+}
+
+mjx-mstyle {
+  display: inline-block;
+}
+
+mjx-merror {
+  display: inline-block;
+  color: red;
+  background-color: yellow;
+}
+
+mjx-mphantom {
+  visibility: hidden;
+}
+
+_::-webkit-full-page-media, _:future, :root mjx-container {
+  will-change: opacity;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-math {
+  display: inline-block;
+  text-align: left;
+  line-height: 0;
+  text-indent: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 100%;
+  font-size-adjust: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  word-spacing: normal;
+  white-space: nowrap;
+  direction: ltr;
+  padding: 1px 0;
+}
+
+mjx-container[jax="CHTML"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="CHTML"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="CHTML"][display="true"] mjx-math {
+  padding: 0;
+}
+
+mjx-container[jax="CHTML"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="CHTML"][justify="right"] {
+  text-align: right;
+}
+
+mjx-mi {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-c {
+  display: inline-block;
+}
+
+mjx-utext {
+  display: inline-block;
+  padding: .75em 0 .2em 0;
+}
+
+mjx-mo {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-stretchy-h {
+  display: inline-table;
+  width: 100%;
+}
+
+mjx-stretchy-h > * {
+  display: table-cell;
+  width: 0;
+}
+
+mjx-stretchy-h > * > mjx-c {
+  display: inline-block;
+  transform: scalex(1.0000001);
+}
+
+mjx-stretchy-h > * > mjx-c::before {
+  display: inline-block;
+  width: initial;
+}
+
+mjx-stretchy-h > mjx-ext {
+  /* IE */ overflow: hidden;
+  /* others */ overflow: clip visible;
+  width: 100%;
+}
+
+mjx-stretchy-h > mjx-ext > mjx-c::before {
+  transform: scalex(500);
+}
+
+mjx-stretchy-h > mjx-ext > mjx-c {
+  width: 0;
+}
+
+mjx-stretchy-h > mjx-beg > mjx-c {
+  margin-right: -.1em;
+}
+
+mjx-stretchy-h > mjx-end > mjx-c {
+  margin-left: -.1em;
+}
+
+mjx-stretchy-v {
+  display: inline-block;
+}
+
+mjx-stretchy-v > * {
+  display: block;
+}
+
+mjx-stretchy-v > mjx-beg {
+  height: 0;
+}
+
+mjx-stretchy-v > mjx-end > mjx-c {
+  display: block;
+}
+
+mjx-stretchy-v > * > mjx-c {
+  transform: scaley(1.0000001);
+  transform-origin: left center;
+  overflow: hidden;
+}
+
+mjx-stretchy-v > mjx-ext {
+  display: block;
+  height: 100%;
+  box-sizing: border-box;
+  border: 0px solid transparent;
+  /* IE */ overflow: hidden;
+  /* others */ overflow: visible clip;
+}
+
+mjx-stretchy-v > mjx-ext > mjx-c::before {
+  width: initial;
+  box-sizing: border-box;
+}
+
+mjx-stretchy-v > mjx-ext > mjx-c {
+  transform: scaleY(500) translateY(.075em);
+  overflow: visible;
+}
+
+mjx-mark {
+  display: inline-block;
+  height: 0px;
+}
+
+mjx-TeXAtom {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-c::before {
+  display: block;
+  width: 0;
+}
+
+.MJX-TEX {
+  font-family: MJXZERO, MJXTEX;
+}
+
+.TEX-B {
+  font-family: MJXZERO, MJXTEX-B;
+}
+
+.TEX-I {
+  font-family: MJXZERO, MJXTEX-I;
+}
+
+.TEX-MI {
+  font-family: MJXZERO, MJXTEX-MI;
+}
+
+.TEX-BI {
+  font-family: MJXZERO, MJXTEX-BI;
+}
+
+.TEX-S1 {
+  font-family: MJXZERO, MJXTEX-S1;
+}
+
+.TEX-S2 {
+  font-family: MJXZERO, MJXTEX-S2;
+}
+
+.TEX-S3 {
+  font-family: MJXZERO, MJXTEX-S3;
+}
+
+.TEX-S4 {
+  font-family: MJXZERO, MJXTEX-S4;
+}
+
+.TEX-A {
+  font-family: MJXZERO, MJXTEX-A;
+}
+
+.TEX-C {
+  font-family: MJXZERO, MJXTEX-C;
+}
+
+.TEX-CB {
+  font-family: MJXZERO, MJXTEX-CB;
+}
+
+.TEX-FR {
+  font-family: MJXZERO, MJXTEX-FR;
+}
+
+.TEX-FRB {
+  font-family: MJXZERO, MJXTEX-FRB;
+}
+
+.TEX-SS {
+  font-family: MJXZERO, MJXTEX-SS;
+}
+
+.TEX-SSB {
+  font-family: MJXZERO, MJXTEX-SSB;
+}
+
+.TEX-SSI {
+  font-family: MJXZERO, MJXTEX-SSI;
+}
+
+.TEX-SC {
+  font-family: MJXZERO, MJXTEX-SC;
+}
+
+.TEX-T {
+  font-family: MJXZERO, MJXTEX-T;
+}
+
+.TEX-V {
+  font-family: MJXZERO, MJXTEX-V;
+}
+
+.TEX-VB {
+  font-family: MJXZERO, MJXTEX-VB;
+}
+
+mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
+  font-family: MJXZERO, MJXTEX-S1, MJXTEX-S4, MJXTEX, MJXTEX-A ! important;
+}
+
+@font-face /* 0 */ {
+  font-family: MJXZERO;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Zero.woff") format("woff");
+}
+
+@font-face /* 1 */ {
+  font-family: MJXTEX;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff") format("woff");
+}
+
+@font-face /* 2 */ {
+  font-family: MJXTEX-B;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff") format("woff");
+}
+
+@font-face /* 3 */ {
+  font-family: MJXTEX-I;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff") format("woff");
+}
+
+@font-face /* 4 */ {
+  font-family: MJXTEX-MI;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff") format("woff");
+}
+
+@font-face /* 5 */ {
+  font-family: MJXTEX-BI;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff") format("woff");
+}
+
+@font-face /* 6 */ {
+  font-family: MJXTEX-S1;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff") format("woff");
+}
+
+@font-face /* 7 */ {
+  font-family: MJXTEX-S2;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff") format("woff");
+}
+
+@font-face /* 8 */ {
+  font-family: MJXTEX-S3;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size3-Regular.woff") format("woff");
+}
+
+@font-face /* 9 */ {
+  font-family: MJXTEX-S4;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size4-Regular.woff") format("woff");
+}
+
+@font-face /* 10 */ {
+  font-family: MJXTEX-A;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff") format("woff");
+}
+
+@font-face /* 11 */ {
+  font-family: MJXTEX-C;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Regular.woff") format("woff");
+}
+
+@font-face /* 12 */ {
+  font-family: MJXTEX-CB;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Bold.woff") format("woff");
+}
+
+@font-face /* 13 */ {
+  font-family: MJXTEX-FR;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Regular.woff") format("woff");
+}
+
+@font-face /* 14 */ {
+  font-family: MJXTEX-FRB;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Bold.woff") format("woff");
+}
+
+@font-face /* 15 */ {
+  font-family: MJXTEX-SS;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Regular.woff") format("woff");
+}
+
+@font-face /* 16 */ {
+  font-family: MJXTEX-SSB;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Bold.woff") format("woff");
+}
+
+@font-face /* 17 */ {
+  font-family: MJXTEX-SSI;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Italic.woff") format("woff");
+}
+
+@font-face /* 18 */ {
+  font-family: MJXTEX-SC;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Script-Regular.woff") format("woff");
+}
+
+@font-face /* 19 */ {
+  font-family: MJXTEX-T;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Typewriter-Regular.woff") format("woff");
+}
+
+@font-face /* 20 */ {
+  font-family: MJXTEX-V;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Regular.woff") format("woff");
+}
+
+@font-face /* 21 */ {
+  font-family: MJXTEX-VB;
+  src: url("https://machinelearningmastery.com/wp-content/cache/min/1/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Bold.woff") format("woff");
+}
+
+mjx-c.mjx-c1D443.TEX-I::before {
+  padding: 0.683em 0.751em 0 0;
+  content: "P";
+}
+
+mjx-c.mjx-c28::before {
+  padding: 0.75em 0.389em 0.25em 0;
+  content: "(";
+}
+
+mjx-c.mjx-c1D703.TEX-I::before {
+  padding: 0.705em 0.469em 0.01em 0;
+  content: "\3B8";
+}
+
+mjx-c.mjx-c7C::before {
+  padding: 0.75em 0.278em 0.249em 0;
+  content: "|";
+}
+
+mjx-c.mjx-c1D44B.TEX-I::before {
+  padding: 0.683em 0.852em 0 0;
+  content: "X";
+}
+
+mjx-c.mjx-c29::before {
+  padding: 0.75em 0.389em 0.25em 0;
+  content: ")";
+}
+
+mjx-c.mjx-c3D::before {
+  padding: 0.583em 0.778em 0.082em 0;
+  content: "=";
+}
+
+mjx-c.mjx-c2217::before {
+  padding: 0.465em 0.5em 0 0;
+  content: "\2217";
+}
+
+mjx-c.mjx-c2F::before {
+  padding: 0.75em 0.5em 0.25em 0;
+  content: "/";
+}
+</style><link rel="stylesheet" type="text/css" href="./A Gentle Introduction to the Bayes Optimal Classifier_files/twitcount.css" media="all"><style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style></head>
+<body class="post-template-default single single-post postid-9158 single-format-standard safari alt-style-default two-col-left width-960 two-col-left-960" data-new-gr-c-s-check-loaded="14.1039.0" data-gr-ext-installed="">
+<div id="wrapper">
+
+	<div id="inner-wrapper">
+
+	<h3 class="nav-toggle icon"><a href="https://machinelearningmastery.com/bayes-optimal-classifier/#navigation">Navigation</a></h3>
+
+	<header id="header" class="col-full">
+
+		<div id="logo">
+<a href="https://machinelearningmastery.com/" title="Making developers awesome at machine learning"><img width="480" height="80" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/Header_smaller_text_better-1.webp" alt="Machine Learning Mastery"></a>
+<span class="site-title"><a href="https://machinelearningmastery.com/">Machine Learning Mastery</a></span>
+<span class="site-description">Making developers awesome at machine learning</span>
+</div>
+	    <div class="header-widget">
+	        <div id="custom_html-62" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div style="text-align: right;">
+	<script src="./A Gentle Introduction to the Bayes Optimal Classifier_files/embed.js" async="" defer=""></script> <a href="https://machinelearningmastery.com/bayes-optimal-classifier/" data-leadbox-popup="hjcywzAaaKuUBKVifbRio8" data-leadbox-domain="machinelearningmastery.lpages.co">Click to Take the FREE Probability Crash-Course</a> 
+</div></div></div><div id="search-4" class="widget widget_search"><div class="search_main">
+    <form method="get" class="searchform" action="https://machinelearningmastery.com/">
+        <input type="text" class="field s" name="s" value="Search..." onfocus="if (!window.__cfRLUnblockHandlers) return false; if (this.value == &#39;Search...&#39;) {this.value = &#39;&#39;;}" onblur="if (!window.__cfRLUnblockHandlers) return false; if (this.value == &#39;&#39;) {this.value = &#39;Search...&#39;;}">
+		<input type="hidden" name="post_type" value="post">
+        <button type="submit" class="fa fa-search submit" name="submit" value="Search"></button>
+    </form>
+    <div class="fix"></div>
+</div></div>	    </div>
+	
+	</header>
+	<nav id="navigation" class="col-full" role="navigation">
+
+	
+	<section class="menus">
+
+		<a href="https://machinelearningmastery.com/" class="nav-home"><span>Home</span></a>
+
+	<h3>Main Menu</h3><ul id="main-nav" class="nav fl"><li id="menu-item-6503" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6503"><a href="https://machinelearningmastery.com/start-here/">Get Started</a></li>
+<li id="menu-item-6501" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-6501"><a href="https://machinelearningmastery.com/blog/">Blog</a></li>
+<li id="menu-item-6506" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-6506 parent"><a href="https://machinelearningmastery.com/bayes-optimal-classifier/#">Topics</a>
+<ul class="sub-menu">
+	<li id="menu-item-6508" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6508"><a href="https://machinelearningmastery.com/category/deep-learning/">Deep Learning (keras)</a></li>
+	<li id="menu-item-7921" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7921"><a href="https://machinelearningmastery.com/category/deep-learning-for-computer-vision/">Computer Vision</a></li>
+	<li id="menu-item-6509" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6509"><a href="https://machinelearningmastery.com/category/deep-learning-time-series/">Neural Net Time Series</a></li>
+	<li id="menu-item-6515" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6515"><a href="https://machinelearningmastery.com/category/natural-language-processing/">NLP (Text)</a></li>
+	<li id="menu-item-8576" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8576"><a href="https://machinelearningmastery.com/category/generative-adversarial-networks/">GANs</a></li>
+	<li id="menu-item-6511" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6511"><a href="https://machinelearningmastery.com/category/lstm/">LSTMs</a></li>
+	<li id="menu-item-7106" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7106"><a href="https://machinelearningmastery.com/category/better-deep-learning/">Better Deep Learning</a></li>
+	<li id="menu-item-6512" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6512"><a href="https://machinelearningmastery.com/category/machine-learning-algorithms/">Intro to Algorithms</a></li>
+	<li id="menu-item-6507" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6507"><a href="https://machinelearningmastery.com/category/algorithms-from-scratch/">Code Algorithms</a></li>
+	<li id="menu-item-6520" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6520"><a href="https://machinelearningmastery.com/category/time-series/">Intro to Time Series</a></li>
+	<li id="menu-item-6516" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6516"><a href="https://machinelearningmastery.com/category/python-machine-learning/">Python (scikit-learn)</a></li>
+	<li id="menu-item-11055" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11055"><a href="https://machinelearningmastery.com/category/ensemble-learning/">Ensemble Learning</a></li>
+	<li id="menu-item-9966" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9966"><a href="https://machinelearningmastery.com/category/imbalanced-classification/">Imbalanced Learning</a></li>
+	<li id="menu-item-10674" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10674"><a href="https://machinelearningmastery.com/category/data-preparation/">Data Preparation</a></li>
+	<li id="menu-item-6517" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6517"><a href="https://machinelearningmastery.com/category/r-machine-learning/">R (caret)</a></li>
+	<li id="menu-item-6522" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6522"><a href="https://machinelearningmastery.com/category/weka-machine-learning/">Weka (no code)</a></li>
+	<li id="menu-item-6510" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6510"><a href="https://machinelearningmastery.com/category/linear-algebra/">Linear Algebra</a></li>
+	<li id="menu-item-6519" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6519"><a href="https://machinelearningmastery.com/category/statistical-methods/">Statistics</a></li>
+	<li id="menu-item-12825" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12825"><a href="https://machinelearningmastery.com/category/optimization/">Optimization</a></li>
+	<li id="menu-item-8989" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-8989"><a href="https://machinelearningmastery.com/category/probability/">Probability</a></li>
+	<li id="menu-item-6523" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6523"><a href="https://machinelearningmastery.com/category/xgboost/">XGBoost</a></li>
+</ul>
+</li>
+<li id="menu-item-6502" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6502"><a href="https://machinelearningmastery.com/products/">EBooks</a></li>
+<li id="menu-item-6500" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6500"><a href="https://machinelearningmastery.com/faq/">FAQ</a></li>
+<li id="menu-item-6504" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6504"><a href="https://machinelearningmastery.com/about/">About</a></li>
+<li id="menu-item-6505" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6505"><a href="https://machinelearningmastery.com/contact/">Contact</a></li>
+</ul>	<div class="side-nav">
+		</div><!-- /#side-nav -->
+
+	</section><!-- /.menus -->
+
+	<a href="https://machinelearningmastery.com/bayes-optimal-classifier/#top" class="nav-close"><span>Return to Content</span></a>
+
+</nav>
+       
+    <!-- #content Starts -->
+	    <div id="content" class="col-full">
+    
+    	<div id="main-sidebar-container">    
+
+            <!-- #main Starts -->
+                        <section id="main">                       
+<article class="post-9158 post type-post status-publish format-standard has-post-thumbnail hentry category-probability">
+	<header>
+	<h1 class="title entry-title">A Gentle Introduction to the Bayes Optimal Classifier</h1>	</header>
+<div class="post-meta"><span class="small">By</span> <span class="author vcard"><span class="fn"><a href="https://machinelearningmastery.com/author/jasonb/" title="Posts by Jason Brownlee" rel="author">Jason Brownlee</a></span></span> <span class="small">on</span> <abbr class="date time published updated" title="2019-12-04T05:00:56+1100">December 4, 2019</abbr>  <span class="small">in</span> <span class="categories"><a href="https://machinelearningmastery.com/category/probability/" title="View all items in Probability">Probability</a></span>  </div>
+	<section class="entry">
+<div class="simplesocialbuttons simplesocial-simple-icons simplesocialbuttons_inline simplesocialbuttons-align-left post-9158 post simplesocialbuttons-inline-no-animation simplesocialbuttons-inline-in">
+<button class="ssb_tweet-icon" data-href="https://twitter.com/share?text=A+Gentle+Introduction+to+the+Bayes+Optimal+Classifier&amp;url=https://machinelearningmastery.com/bayes-optimal-classifier/" rel="nofollow" onclick="if (!window.__cfRLUnblockHandlers) return false; javascript:window.open(this.dataset.href, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;);return false;">
+						<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72"><path fill="none" d="M0 0h72v72H0z"></path><path class="icon" fill="#fff" d="M68.812 15.14c-2.348 1.04-4.87 1.744-7.52 2.06 2.704-1.62 4.78-4.186 5.757-7.243-2.53 1.5-5.33 2.592-8.314 3.176C56.35 10.59 52.948 9 49.182 9c-7.23 0-13.092 5.86-13.092 13.093 0 1.026.118 2.02.338 2.98C25.543 24.527 15.9 19.318 9.44 11.396c-1.125 1.936-1.77 4.184-1.77 6.58 0 4.543 2.312 8.552 5.824 10.9-2.146-.07-4.165-.658-5.93-1.64-.002.056-.002.11-.002.163 0 6.345 4.513 11.638 10.504 12.84-1.1.298-2.256.457-3.45.457-.845 0-1.666-.078-2.464-.23 1.667 5.2 6.5 8.985 12.23 9.09-4.482 3.51-10.13 5.605-16.26 5.605-1.055 0-2.096-.06-3.122-.184 5.794 3.717 12.676 5.882 20.067 5.882 24.083 0 37.25-19.95 37.25-37.25 0-.565-.013-1.133-.038-1.693 2.558-1.847 4.778-4.15 6.532-6.774z"></path></svg></span><i class="simplesocialtxt">Tweet </i></button>
+		<button class="ssb_fbshare-icon" target="_blank" data-href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmastery.com/bayes-optimal-classifier/" onclick="if (!window.__cfRLUnblockHandlers) return false; javascript:window.open(this.dataset.href, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;);return false;">
+						<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="_1pbq" color="#ffffff"><path fill="#ffffff" fill-rule="evenodd" class="icon" d="M8 14H3.667C2.733 13.9 2 13.167 2 12.233V3.667A1.65 1.65 0 0 1 3.667 2h8.666A1.65 1.65 0 0 1 14 3.667v8.566c0 .934-.733 1.667-1.667 1.767H10v-3.967h1.3l.7-2.066h-2V6.933c0-.466.167-.9.867-.9H12v-1.8c.033 0-.933-.266-1.533-.266-1.267 0-2.434.7-2.467 2.133v1.867H6v2.066h2V14z"></path></svg></span>
+						<span class="simplesocialtxt">Share </span> </button>
+<button class="ssb_linkedin-icon" data-href="https://www.linkedin.com/cws/share?url=https://machinelearningmastery.com/bayes-optimal-classifier/" onclick="if (!window.__cfRLUnblockHandlers) return false; javascript:window.open(this.dataset.href, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;);return false;">
+						<span class="icon"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="15px" height="14.1px" viewBox="-301.4 387.5 15 14.1" enable-background="new -301.4 387.5 15 14.1" xml:space="preserve"> <g id="XMLID_398_"> <path id="XMLID_399_" fill="#FFFFFF" d="M-296.2,401.6c0-3.2,0-6.3,0-9.5h0.1c1,0,2,0,2.9,0c0.1,0,0.1,0,0.1,0.1c0,0.4,0,0.8,0,1.2 c0.1-0.1,0.2-0.3,0.3-0.4c0.5-0.7,1.2-1,2.1-1.1c0.8-0.1,1.5,0,2.2,0.3c0.7,0.4,1.2,0.8,1.5,1.4c0.4,0.8,0.6,1.7,0.6,2.5 c0,1.8,0,3.6,0,5.4v0.1c-1.1,0-2.1,0-3.2,0c0-0.1,0-0.1,0-0.2c0-1.6,0-3.2,0-4.8c0-0.4,0-0.8-0.2-1.2c-0.2-0.7-0.8-1-1.6-1 c-0.8,0.1-1.3,0.5-1.6,1.2c-0.1,0.2-0.1,0.5-0.1,0.8c0,1.7,0,3.4,0,5.1c0,0.2,0,0.2-0.2,0.2c-1,0-1.9,0-2.9,0 C-296.1,401.6-296.2,401.6-296.2,401.6z"></path> <path id="XMLID_400_" fill="#FFFFFF" d="M-298,401.6L-298,401.6c-1.1,0-2.1,0-3,0c-0.1,0-0.1,0-0.1-0.1c0-3.1,0-6.1,0-9.2 c0-0.1,0-0.1,0.1-0.1c1,0,2,0,2.9,0h0.1C-298,395.3-298,398.5-298,401.6z"></path> <path id="XMLID_401_" fill="#FFFFFF" d="M-299.6,390.9c-0.7-0.1-1.2-0.3-1.6-0.8c-0.5-0.8-0.2-2.1,1-2.4c0.6-0.2,1.2-0.1,1.8,0.2 c0.5,0.4,0.7,0.9,0.6,1.5c-0.1,0.7-0.5,1.1-1.1,1.3C-299.1,390.8-299.4,390.8-299.6,390.9L-299.6,390.9z"></path> </g> </svg> </span>
+						<span class="simplesocialtxt">Share</span> </button>
+</div>
+<p id="last-modified-info">Last Updated on August 19, 2020</p>
+<p>The Bayes Optimal Classifier is a probabilistic model that makes the most probable prediction for a new example.</p>
+<p>It is described using the Bayes Theorem that provides a principled way for calculating a conditional probability. It is also closely related to the Maximum a Posteriori: a probabilistic framework referred to as MAP that finds the most probable hypothesis for a training dataset.</p>
+<p>In practice, the Bayes Optimal Classifier is computationally expensive, if not intractable to calculate, and instead, simplifications such as the Gibbs algorithm and Naive Bayes can be used to approximate the outcome.</p>
+<p>In this post, you will discover Bayes Optimal Classifier for making the most accurate predictions for new instances of data.</p>
+<p>After reading this post, you will know:</p>
+<ul>
+<li>Bayes Theorem provides a principled way for calculating conditional probabilities, called a posterior probability.</li>
+<li>Maximum a Posteriori is a probabilistic framework that finds the most probable hypothesis that describes the training dataset.</li>
+<li>Bayes Optimal Classifier is a probabilistic model that finds the most probable prediction using the training data and space of hypotheses to make a prediction for a new data instance.</li>
+</ul>
+<p><strong>Kick-start your project</strong> with my new book <a href="https://machinelearningmastery.com/probability-for-machine-learning/">Probability for Machine Learning</a>, including <em>step-by-step tutorials</em> and the <em>Python&nbsp;source code</em> files for all examples.</p>
+<p>Let’s get started.</p>
+<div id="attachment_9169" style="width: 810px" class="wp-caption aligncenter"><img aria-describedby="caption-attachment-9169" loading="lazy" class="size-full wp-image-9169" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/A-Gentle-Introduction-to-the-Bayes-Optimal-Classifier.jpg" alt="A Gentle Introduction to the Bayes Optimal Classifier" width="800" height="600" srcset="https://machinelearningmastery.com/wp-content/uploads/2019/12/A-Gentle-Introduction-to-the-Bayes-Optimal-Classifier.jpg 800w, https://machinelearningmastery.com/wp-content/uploads/2019/12/A-Gentle-Introduction-to-the-Bayes-Optimal-Classifier-300x225.jpg 300w, https://machinelearningmastery.com/wp-content/uploads/2019/12/A-Gentle-Introduction-to-the-Bayes-Optimal-Classifier-768x576.jpg 768w" sizes="(max-width: 800px) 100vw, 800px"><p id="caption-attachment-9169" class="wp-caption-text">A Gentle Introduction to the Bayes Optimal Classifier<br>Photo by <a href="https://flickr.com/photos/genesisscience/43468319822/">Nate Loper</a>, some rights reserved.</p></div>
+<h2>Overview</h2>
+<p>This tutorial is divided into three parts; they are:</p>
+<ol>
+<li>Bayes Theorem</li>
+<li>Maximum a Posteriori (MAP)</li>
+<li>Bayes Optimal Classifier</li>
+</ol>
+<h2>Bayes Theorem</h2>
+<p>Recall that the Bayes theorem provides a principled way of calculating a <a href="https://machinelearningmastery.com/joint-marginal-and-conditional-probability-for-machine-learning/">conditional probability</a>.</p>
+<p>It involves calculating the conditional probability of one outcome given another outcome, using the inverse of this relationship, stated as follows:</p>
+<ul>
+<li>P(A | B) = (P(B | A) * P(A)) / P(B)</li>
+</ul>
+<p>The quantity that we are calculating is typically referred to as the posterior probability of <em>A</em> given <em>B</em> and <em>P(A)</em> is referred to as the prior probability of <em>A</em>.</p>
+<p>The normalizing constant of <em>P(B)</em> can be removed, and the posterior can be shown to be proportional to the probability of B given A multiplied by the prior.</p>
+<ul>
+<li>P(A | B) is proportional to P(B | A) * P(A)</li>
+</ul>
+<p>Or, simply:</p>
+<ul>
+<li>P(A | B) = P(B | A) * P(A)</li>
+</ul>
+<p>This is a helpful simplification as we are not interested in estimating a probability, but instead in optimizing a quantity. A proportional quantity is good enough for this purpose.</p>
+<p>For more on the topic of Bayes Theorem, see the post:</p>
+<ul>
+<li><a href="https://machinelearningmastery.com/bayes-theorem-for-machine-learning">A Gentle Introduction to Bayes Theorem for Machine Learning</a></li>
+</ul>
+<p>Now that we are up to speed on Bayes Theorem, let’s also take a look at the Maximum a Posteriori framework.</p>
+<h2>Maximum a Posteriori (MAP)</h2>
+<p>Machine learning involves finding a model (<a href="https://machinelearningmastery.com/what-is-a-hypothesis-in-machine-learning/">hypothesis</a>) that best explains the training data.</p>
+<p>There are two probabilistic frameworks that underlie many different machine learning algorithms.</p>
+<p>They are:</p>
+<ul>
+<li>Maximum a Posteriori (MAP), a Bayesian method.</li>
+<li>Maximum Likelihood Estimation (MLE), a frequentist method.</li>
+</ul>
+<p>The objective of both of these frameworks in the context of machine learning is to locate the hypothesis that is most probable given the training dataset.</p>
+<p>Specifically, they answer the question:</p>
+<blockquote><p><strong>What is the most probable hypothesis given the training data?</strong></p></blockquote>
+<p>Both approaches frame the problem of fitting a model as optimization and involve searching for a distribution and set of parameters for the distribution that best describes the observed data.</p>
+<p>MLE is a frequentist approach, and MAP provides a Bayesian alternative.</p>
+<blockquote><p>A popular replacement for maximizing the likelihood is maximizing the Bayesian posterior probability density of the parameters instead.</p></blockquote>
+<p>— Page 306, <a href="https://amzn.to/2zn1Eny">Information Theory, Inference and Learning Algorithms</a>, 2003.</p>
+<p>Given the simplification of Bayes Theorem to a proportional quantity, we can use it to estimate the proportional hypothesis and parameters (<em>theta</em>) that explain our dataset (<em>X</em>), stated as:</p>
+<ul>
+<li>P(theta | X) = P(X | theta) * P(theta)</li>
+</ul>
+<p>Maximizing this quantity over a range of theta solves an optimization problem for estimating the central tendency of the posterior probability (e.g. the model of the distribution).</p>
+<p>As such, this technique is referred to as “<em>maximum a posteriori estimation</em>,” or MAP estimation for short, and sometimes simply “<em>maximum posterior estimation</em>.”</p>
+<ul>
+<li>maximize P(X | theta) * P(theta)</li>
+</ul>
+<p>For more on the topic of Maximum a Posteriori, see the post:</p>
+<ul>
+<li><a href="https://machinelearningmastery.com/maximum-a-posteriori-estimation">A Gentle Introduction to Maximum a Posteriori (MAP) for Machine Learning</a></li>
+</ul>
+<p>Now that we are familiar with the MAP framework, we can take a closer look at the related concept of the Bayes optimal classifier.</p>
+<h2>Bayes Optimal Classifier</h2>
+<p>The Bayes optimal classifier is a probabilistic model that makes the most probable prediction for a new example, given the training dataset.</p>
+<p>This model is also referred to as the Bayes optimal learner, the Bayes classifier, Bayes optimal decision boundary, or the Bayes optimal discriminant function.</p>
+<ul>
+<li><strong>Bayes Classifier</strong>: Probabilistic model that makes the most probable prediction for new examples.</li>
+</ul>
+<p>Specifically, the Bayes optimal classifier answers the question:</p>
+<blockquote><p><strong>What is the most probable classification of the new instance given the training data?</strong></p></blockquote>
+<p>This is different from the MAP framework that seeks the most probable hypothesis (model). Instead, we are interested in making a specific prediction.</p>
+<blockquote><p>In general, the most probable classification of the new instance is obtained by combining the predictions of all hypotheses, weighted by their posterior probabilities.</p></blockquote>
+<p>— Page 175, <a href="https://amzn.to/2O1R51L">Machine Learning</a>, 1997.</p>
+<p>The equation below demonstrates how to calculate the conditional probability for a new instance (<em>vi</em>) given the training data (<em>D</em>), given a space of hypotheses (<em>H</em>).</p>
+<ul>
+<li>P(vj | D) = sum {h in H} P(vj | hi) * P(hi | D)</li>
+</ul>
+<p>Where <em>vj</em> is a new instance to be classified, <em>H</em> is the set of hypotheses for classifying the instance, <em>hi</em> is a given hypothesis, <em>P(vj | hi)</em> is the posterior probability for <em>vi</em> given hypothesis <em>hi</em>, and <em>P(hi | D)</em> is the posterior probability of the hypothesis <em>hi</em> given the data <em>D</em>.</p>
+<p>Selecting the outcome with the maximum probability is an example of a Bayes optimal classification.</p>
+<ul>
+<li>max sum {h in H} P(vj | hi) * P(hi | D)</li>
+</ul>
+<p>Any model that classifies examples using this equation is a Bayes optimal classifier and no other model can outperform this technique, on average.</p>
+<blockquote><p>Any system that classifies new instances according to [the equation] is called a Bayes optimal classifier, or Bayes optimal learner. No other classification method using the same hypothesis space and same prior knowledge can outperform this method on average.</p></blockquote>
+<p>— Page 175, <a href="https://amzn.to/2O1R51L">Machine Learning</a>, 1997.</p>
+<p>We have to let that sink in.</p>
+<p>It is a big deal.</p>
+<p>It means that any other algorithm that operates on the same data, the same set of hypotheses, and same prior probabilities cannot outperform this approach, on average. Hence the name “<em>optimal classifier</em>.”</p>
+<p>Although the classifier makes optimal predictions, it is not perfect given the uncertainty in the training data and incomplete coverage of the problem domain and hypothesis space. As such, the model will make errors. These errors are often referred to as Bayes errors.</p>
+<blockquote><p>The Bayes classifier produces the lowest possible test error rate, called the Bayes error rate. […] The Bayes error rate is analogous to the irreducible error …</p></blockquote>
+<p>— Page 38, <a href="https://amzn.to/2O4gCHv">An Introduction to Statistical Learning with Applications in R</a>, 2017.</p>
+<p>Because the Bayes classifier is optimal, the Bayes error is the minimum possible error that can be made.</p>
+<ul>
+<li><strong>Bayes Error</strong>: The minimum possible error that can be made when making predictions.</li>
+</ul>
+<p>Further, the model is often described in terms of classification, e.g. the Bayes Classifier. Nevertheless, the principle applies just as well to regression: that is, predictive modeling problems where a numerical value is predicted instead of a class label.</p>
+<p>It is a theoretical model, but it is held up as an ideal that we may wish to pursue.</p>
+<blockquote><p>In theory we would always like to predict qualitative responses using the Bayes classifier. But for real data, we do not know the conditional distribution of Y given X, and so computing the Bayes classifier is impossible. Therefore, the Bayes classifier serves as an unattainable gold standard against which to compare other methods.</p></blockquote>
+<p>— Page 39, <a href="https://amzn.to/2O4gCHv">An Introduction to Statistical Learning with Applications in R</a>, 2017.</p>
+<p>Because of the computational cost of this optimal strategy, we instead can work with direct simplifications of the approach.</p>
+<p>Two of the most commonly used simplifications use a sampling algorithm for hypotheses, such as Gibbs sampling, or to use the simplifying assumptions of the Naive Bayes classifier.</p>
+<ul>
+<li><strong>Gibbs Algorithm</strong>. Randomly sample hypotheses biased on their posterior probability.</li>
+<li><strong>Naive Bayes</strong>. Assume that variables in the input data are conditionally independent.</li>
+</ul>
+<p>For more on the topic of Naive Bayes, see the post:</p>
+<ul>
+<li><a href="https://machinelearningmastery.com/classification-as-conditional-probability-and-the-naive-bayes-algorithm">How to Develop a Naive Bayes Classifier from Scratch in Python</a></li>
+</ul>
+<p>Nevertheless, many nonlinear machine learning algorithms are able to make predictions are that are close approximations of the Bayes classifier in practice.</p>
+<blockquote><p>Despite the fact that it is a very simple approach, KNN can often produce classifiers that are surprisingly close to the optimal Bayes classifier.</p></blockquote>
+<p>— Page 39, <a href="https://amzn.to/2O4gCHv">An Introduction to Statistical Learning with Applications in R</a>, 2017.</p>
+<h2>Further Reading</h2>
+<p>This section provides more resources on the topic if you are looking to go deeper.</p>
+<h3>Posts</h3>
+<ul>
+<li><a href="https://machinelearningmastery.com/maximum-a-posteriori-estimation">A Gentle Introduction to Maximum a Posteriori (MAP) for Machine Learning</a></li>
+<li><a href="https://machinelearningmastery.com/bayes-theorem-for-machine-learning">A Gentle Introduction to Bayes Theorem for Machine Learning</a></li>
+<li><a href="https://machinelearningmastery.com/classification-as-conditional-probability-and-the-naive-bayes-algorithm">How to Develop a Naive Bayes Classifier from Scratch in Python</a></li>
+</ul>
+<h3>Books</h3>
+<ul>
+<li>Section 6.7 Bayes Optimal Classifier, <a href="https://amzn.to/2O1R51L">Machine Learning</a>, 1997.</li>
+<li>Section 2.4.2 Bayes error and noise, <a href="https://amzn.to/32Kw53x">Foundations of Machine Learning</a>, 2nd edition, 2018.</li>
+<li>Section 2.2.3 The Classification Setting, <a href="https://amzn.to/2O4gCHv">An Introduction to Statistical Learning with Applications in R</a>, 2017.</li>
+<li><a href="https://amzn.to/2zn1Eny">Information Theory, Inference and Learning Algorithms</a>, 2003.</li>
+</ul>
+<h3>Papers</h3>
+<ul>
+<li><a href="https://ieeexplore.ieee.org/abstract/document/80266/">The Multilayer Perceptron As An Approximation To A Bayes Optimal Discriminant Function</a>, 1990.</li>
+<li><a href="https://www.informatik.uni-marburg.de/~eyke/publications/589.pdf">Bayes Optimal Multilabel Classification via Probabilistic Classifier Chains</a>, 2010.</li>
+<li><a href="http://new.aaai.org/Papers/AAAI/2000/AAAI00-101.pdf">Restricted bayes optimal classifiers</a>, 2000.</li>
+<li><a href="https://www.cs.helsinki.fi/u/jkivinen/opetus/iml/2013/Bayes.pdf">Bayes Classifier And Bayes Error</a>, 2013.</li>
+</ul>
+<h2>Summary</h2>
+<p>In this post, you discovered the Bayes Optimal Classifier for making the most accurate predictions for new instances of data.</p>
+<p>Specifically, you learned:</p>
+<ul>
+<li>Bayes Theorem provides a principled way for calculating conditional probabilities, called a posterior probability.</li>
+<li>Maximum a Posteriori is a probabilistic framework that finds the most probable hypothesis that describes the training dataset.</li>
+<li>Bayes Optimal Classifier is a probabilistic framework that finds the most probable prediction using the training data and space of hypotheses to make a prediction for a new data instance.</li>
+</ul>
+<p>Do you have any questions?<br>
+Ask your questions in the comments below and I will do my best to answer.</p>
+<div class="widget_text awac-wrapper" id="custom_html-63"><div class="widget_text awac widget custom_html-63"><div class="textwidget custom-html-widget"><div style="text-align: center;">
+<div class="woo-sc-hr"></div>
+<h2>Get a Handle on Probability for Machine Learning!</h2>
+<a href="https://machinelearningmastery.com/probability-for-machine-learning/" rel="nofollow"><img width="220" height="311" style="border: 0;" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/Cover-220-1.webp" alt="Probability for Machine Learning" align="left"></a>
+
+<p></p><h4>Develop Your Understanding of Probability</h4>
+...with just a few lines of python code<p></p>
+
+<p>Discover how in my new Ebook:<br>
+	<a href="https://machinelearningmastery.com/probability-for-machine-learning/" rel="nofollow">Probability for Machine Learning</a></p>
+
+<p>It provides <strong>self-study tutorials</strong> and <strong>end-to-end projects</strong> on:<br>
+	<em>Bayes Theorem</em>, <em>Bayesian Optimization</em>, <em>Distributions</em>, <em>Maximum Likelihood</em>, <em>Cross-Entropy</em>, <em>Calibrating Models</em><br>
+	and much more...</p>
+
+<p></p><h4>Finally Harness Uncertainty in Your Projects</h4>
+Skip the Academics. Just Results.<p></p>
+
+<a href="https://machinelearningmastery.com/probability-for-machine-learning/" class="woo-sc-button  red"><span class="woo-">See What's Inside</span></a>
+<div class="woo-sc-hr"></div>
+</div></div></div></div><div class="simplesocialbuttons simplesocial-simple-icons simplesocialbuttons_inline simplesocialbuttons-align-left post-9158 post  simplesocialbuttons-inline-no-animation">
+<button class="ssb_tweet-icon" data-href="https://twitter.com/share?text=A+Gentle+Introduction+to+the+Bayes+Optimal+Classifier&amp;url=https://machinelearningmastery.com/bayes-optimal-classifier/" rel="nofollow" onclick="if (!window.__cfRLUnblockHandlers) return false; javascript:window.open(this.dataset.href, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;);return false;">
+						<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72"><path fill="none" d="M0 0h72v72H0z"></path><path class="icon" fill="#fff" d="M68.812 15.14c-2.348 1.04-4.87 1.744-7.52 2.06 2.704-1.62 4.78-4.186 5.757-7.243-2.53 1.5-5.33 2.592-8.314 3.176C56.35 10.59 52.948 9 49.182 9c-7.23 0-13.092 5.86-13.092 13.093 0 1.026.118 2.02.338 2.98C25.543 24.527 15.9 19.318 9.44 11.396c-1.125 1.936-1.77 4.184-1.77 6.58 0 4.543 2.312 8.552 5.824 10.9-2.146-.07-4.165-.658-5.93-1.64-.002.056-.002.11-.002.163 0 6.345 4.513 11.638 10.504 12.84-1.1.298-2.256.457-3.45.457-.845 0-1.666-.078-2.464-.23 1.667 5.2 6.5 8.985 12.23 9.09-4.482 3.51-10.13 5.605-16.26 5.605-1.055 0-2.096-.06-3.122-.184 5.794 3.717 12.676 5.882 20.067 5.882 24.083 0 37.25-19.95 37.25-37.25 0-.565-.013-1.133-.038-1.693 2.558-1.847 4.778-4.15 6.532-6.774z"></path></svg></span><i class="simplesocialtxt">Tweet </i></button>
+		<button class="ssb_fbshare-icon" target="_blank" data-href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmastery.com/bayes-optimal-classifier/" onclick="if (!window.__cfRLUnblockHandlers) return false; javascript:window.open(this.dataset.href, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;);return false;">
+						<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="_1pbq" color="#ffffff"><path fill="#ffffff" fill-rule="evenodd" class="icon" d="M8 14H3.667C2.733 13.9 2 13.167 2 12.233V3.667A1.65 1.65 0 0 1 3.667 2h8.666A1.65 1.65 0 0 1 14 3.667v8.566c0 .934-.733 1.667-1.667 1.767H10v-3.967h1.3l.7-2.066h-2V6.933c0-.466.167-.9.867-.9H12v-1.8c.033 0-.933-.266-1.533-.266-1.267 0-2.434.7-2.467 2.133v1.867H6v2.066h2V14z"></path></svg></span>
+						<span class="simplesocialtxt">Share </span> </button>
+<button class="ssb_linkedin-icon" data-href="https://www.linkedin.com/cws/share?url=https://machinelearningmastery.com/bayes-optimal-classifier/" onclick="if (!window.__cfRLUnblockHandlers) return false; javascript:window.open(this.dataset.href, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;);return false;">
+						<span class="icon"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="15px" height="14.1px" viewBox="-301.4 387.5 15 14.1" enable-background="new -301.4 387.5 15 14.1" xml:space="preserve"> <g id="XMLID_398_"> <path id="XMLID_399_" fill="#FFFFFF" d="M-296.2,401.6c0-3.2,0-6.3,0-9.5h0.1c1,0,2,0,2.9,0c0.1,0,0.1,0,0.1,0.1c0,0.4,0,0.8,0,1.2 c0.1-0.1,0.2-0.3,0.3-0.4c0.5-0.7,1.2-1,2.1-1.1c0.8-0.1,1.5,0,2.2,0.3c0.7,0.4,1.2,0.8,1.5,1.4c0.4,0.8,0.6,1.7,0.6,2.5 c0,1.8,0,3.6,0,5.4v0.1c-1.1,0-2.1,0-3.2,0c0-0.1,0-0.1,0-0.2c0-1.6,0-3.2,0-4.8c0-0.4,0-0.8-0.2-1.2c-0.2-0.7-0.8-1-1.6-1 c-0.8,0.1-1.3,0.5-1.6,1.2c-0.1,0.2-0.1,0.5-0.1,0.8c0,1.7,0,3.4,0,5.1c0,0.2,0,0.2-0.2,0.2c-1,0-1.9,0-2.9,0 C-296.1,401.6-296.2,401.6-296.2,401.6z"></path> <path id="XMLID_400_" fill="#FFFFFF" d="M-298,401.6L-298,401.6c-1.1,0-2.1,0-3,0c-0.1,0-0.1,0-0.1-0.1c0-3.1,0-6.1,0-9.2 c0-0.1,0-0.1,0.1-0.1c1,0,2,0,2.9,0h0.1C-298,395.3-298,398.5-298,401.6z"></path> <path id="XMLID_401_" fill="#FFFFFF" d="M-299.6,390.9c-0.7-0.1-1.2-0.3-1.6-0.8c-0.5-0.8-0.2-2.1,1-2.4c0.6-0.2,1.2-0.1,1.8,0.2 c0.5,0.4,0.7,0.9,0.6,1.5c-0.1,0.7-0.5,1.1-1.1,1.3C-299.1,390.8-299.4,390.8-299.6,390.9L-299.6,390.9z"></path> </g> </svg> </span>
+						<span class="simplesocialtxt">Share</span> </button>
+</div>
+<div class="crp_related  "><h3>More On This Topic</h3><ul><li><a href="https://machinelearningmastery.com/better-naive-bayes/" class="crp_link post-1948"><figure><img loading="lazy" width="150" height="150" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/Better-Naive-Bayes-150x150.jpg" class="crp_thumb crp_featured" alt="Better Naive Bayes: 12 Tips To Get The Most From The Naive Bayes Algorithm" title="Better Naive Bayes: 12 Tips To Get The Most From The Naive Bayes Algorithm"></figure><span class="crp_title">Better Naive Bayes: 12 Tips To Get The Most From The…</span></a></li><li><a href="https://machinelearningmastery.com/naive-bayes-classifier-scratch-python/" class="crp_link post-1945"><figure><img loading="lazy" width="150" height="150" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/naive-bayes-classifier-150x150.jpg" class="crp_thumb crp_featured" alt="Naive Bayes Classifier From Scratch in Python" title="Naive Bayes Classifier From Scratch in Python"></figure><span class="crp_title">Naive Bayes Classifier From Scratch in Python</span></a></li><li><a href="https://machinelearningmastery.com/classification-as-conditional-probability-and-the-naive-bayes-algorithm/" class="crp_link post-8793"><figure><img loading="lazy" width="150" height="150" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/How-to-Develop-a-Naive-Bayes-Classifier-from-Scratch-in-Python-150x150.jpg" class="crp_thumb crp_featured" alt="How to Develop a Naive Bayes Classifier from Scratch in Python" title="How to Develop a Naive Bayes Classifier from Scratch in Python"></figure><span class="crp_title">How to Develop a Naive Bayes Classifier from Scratch…</span></a></li><li><a href="https://machinelearningmastery.com/bayes-theorem-for-machine-learning/" class="crp_link post-8783"><figure><img loading="lazy" width="150" height="150" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/A-Gentle-Introduction-to-Bayes-Theorem-for-Machine-Learning-150x150.jpg" class="crp_thumb crp_featured" alt="A Gentle Introduction to Bayes Theorem for Machine Learning" title="A Gentle Introduction to Bayes Theorem for Machine Learning"></figure><span class="crp_title">A Gentle Introduction to Bayes Theorem for Machine Learning</span></a></li><li><a href="https://machinelearningmastery.com/naive-bayes-for-machine-learning/" class="crp_link post-2305"><figure><img loading="lazy" width="150" height="150" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/Naive-Bayes-for-Machine-Learning-150x150.jpg" class="crp_thumb crp_featured" alt="Naive Bayes for Machine Learning" title="Naive Bayes for Machine Learning"></figure><span class="crp_title">Naive Bayes for Machine Learning</span></a></li><li><a href="https://machinelearningmastery.com/naive-bayes-tutorial-for-machine-learning/" class="crp_link post-2361"><figure><img loading="lazy" width="150" height="150" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/Naive-Bayes-Tutorial-for-Machine-Learning-150x150.jpg" class="crp_thumb crp_featured" alt="Naive Bayes Tutorial for Machine Learning" title="Naive Bayes Tutorial for Machine Learning"></figure><span class="crp_title">Naive Bayes Tutorial for Machine Learning</span></a></li></ul><div class="crp_clear"></div></div>	</section><!-- /.entry -->
+	<div class="fix"></div>
+<aside id="post-author">
+	<div class="profile-image"><img alt="" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/a0942b56b07831ac15d4a168a750e34a.png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" loading="lazy"></div>
+	<div class="profile-content">
+		<h4>About Jason Brownlee</h4>
+		Jason Brownlee, PhD is a machine learning specialist who teaches developers how to get results with modern machine learning methods via hands-on tutorials.				<div class="profile-link">
+			<a href="https://machinelearningmastery.com/author/jasonb/">
+				View all posts by Jason Brownlee <span class="meta-nav">→</span>			</a>
+		</div><!--#profile-link-->
+			</div>
+	<div class="fix"></div>
+</aside>
+<div class="post-utility"></div>
+</article><!-- /.post -->
+	        <div class="post-entries">
+	            <div class="nav-prev fl"><a href="https://machinelearningmastery.com/a-gentle-introduction-to-model-selection-for-machine-learning/" rel="prev"><i class="fa fa-angle-left"></i> A Gentle Introduction to Model Selection for Machine Learning</a></div>
+	            <div class="nav-next fr"><a href="https://machinelearningmastery.com/out-of-fold-predictions-in-machine-learning/" rel="next">How to Use Out-of-Fold Predictions in Machine Learning <i class="fa fa-angle-right"></i></a></div>
+	            <div class="fix"></div>
+	        </div>
+
+		<div id="comments">		 	<h3 id="comments-title">10 Responses to <em>A Gentle Introduction to the Bayes Optimal Classifier</em></h3>
+		 	<ol class="commentlist">
+				
+		<li id="comment-513815" class="comment even thread-even depth-1 parent">
+
+	      	<div id="li-comment-513815" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/62f8794dfb037df4e67a269148c29e11.png" srcset="https://secure.gravatar.com/avatar/62f8794dfb037df4e67a269148c29e11?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40" loading="lazy"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">marco</span>
+	                <span class="date">December 6, 2019 at 1:59 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-513815" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Hello Jason,<br>
+Is there any way to figure out in Keras if an algorithm is a linear regression if there aren’t any kind of metrics?<br>
+Thanks<br>
+Marco</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-513815" data-commentid="513815" data-postid="9158" data-belowelement="comment-513815" data-respondelement="respond" data-replyto="Reply to marco" aria-label="Reply to marco">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-513856" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-2">
+
+	      	<div id="li-comment-513856" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40" loading="lazy"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">December 6, 2019 at 5:20 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-513856" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>You can look at the model was it was defined to confirm what type of model it is.</p>
+<p>You cannot tell from the predictions or evaluation metrics.</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-513856" data-commentid="513856" data-postid="9158" data-belowelement="comment-513856" data-respondelement="respond" data-replyto="Reply to Jason Brownlee" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-514334" class="comment even thread-odd thread-alt depth-1 parent">
+
+	      	<div id="li-comment-514334" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/c7a0f1b5244053e52dc9481c149d8bf7.png" srcset="https://secure.gravatar.com/avatar/c7a0f1b5244053e52dc9481c149d8bf7?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40" loading="lazy"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Markus</span>
+	                <span class="date">December 9, 2019 at 5:56 pm</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-514334" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Hi</p>
+<p>I’ve got a hard time to understand the difference between Naive Bayes and Bayes Optimal Classifier.</p>
+<p>Is it true that the naive assumption about the independence of the given features X1, X2, …, Xn being made by Naive Bayes is NOT made anymore by the Bayes Optimal Classifier?</p>
+<p>Thanks</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-514334" data-commentid="514334" data-postid="9158" data-belowelement="comment-514334" data-respondelement="respond" data-replyto="Reply to Markus" aria-label="Reply to Markus">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-514398" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-2">
+
+	      	<div id="li-comment-514398" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40" loading="lazy"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">December 10, 2019 at 7:27 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-514398" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Great question! </p>
+<p>Correct.</p>
+<p>Naive bayes is a simplification of the optimal classifier that is tractable to implement/use.</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-514398" data-commentid="514398" data-postid="9158" data-belowelement="comment-514398" data-respondelement="respond" data-replyto="Reply to Jason Brownlee" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-521189" class="comment even thread-even depth-1 parent">
+
+	      	<div id="li-comment-521189" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/8a4787ad6e4227af551155ec7d0595b8.png" srcset="https://secure.gravatar.com/avatar/8a4787ad6e4227af551155ec7d0595b8?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40" loading="lazy"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Pinto</span>
+	                <span class="date">February 11, 2020 at 3:35 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-521189" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>In Tom Mitchel Machine Learning book at page 175 in the discussion of ‘Bayes Optimal Classifier’ gives an example with h1, h2, and h3. Are these three hypotheses indicate three methods like MAP, ML? If I calculate Naive Bayes classification for a problem based on MAP and ML, How can I calculate  ‘Bayes Optimal Classifies?</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-521189" data-commentid="521189" data-postid="9158" data-belowelement="comment-521189" data-respondelement="respond" data-replyto="Reply to Pinto" aria-label="Reply to Pinto">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-521215" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-2">
+
+	      	<div id="li-comment-521215" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40" loading="lazy"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">February 11, 2020 at 5:16 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-521215" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>We typically cannot calculate the bayes optimal classifier directly – we don’t know enough, but we can approximate it with other methods, like naive bayes.</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-521215" data-commentid="521215" data-postid="9158" data-belowelement="comment-521215" data-respondelement="respond" data-replyto="Reply to Jason Brownlee" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-543909" class="comment even thread-odd thread-alt depth-1 parent">
+
+	      	<div id="li-comment-543909" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/1f958d90933f1b8427662f5022f42a35.png" srcset="https://secure.gravatar.com/avatar/1f958d90933f1b8427662f5022f42a35?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40" loading="lazy"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Mehran</span>
+	                <span class="date">July 13, 2020 at 11:53 pm</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-543909" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Dear Json<br>
+In Bayes’ formula,</p>
+<p>P(vj | D) = sum {h in H} P(vj | hi) * P(hi | D)</p>
+<p>vj is a class of dataset; not an instance to be classified. This is a typo.</p>
+<p>Thanks</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-543909" data-commentid="543909" data-postid="9158" data-belowelement="comment-543909" data-respondelement="respond" data-replyto="Reply to Mehran" aria-label="Reply to Mehran">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-543965" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-2">
+
+	      	<div id="li-comment-543965" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40" loading="lazy"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">July 14, 2020 at 6:27 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-543965" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Thanks.</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-543965" data-commentid="543965" data-postid="9158" data-belowelement="comment-543965" data-respondelement="respond" data-replyto="Reply to Jason Brownlee" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-612135" class="comment even thread-even depth-1 parent">
+
+	      	<div id="li-comment-612135" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/80395b2bc9611670e432a6b44625d29e.png" srcset="https://secure.gravatar.com/avatar/80395b2bc9611670e432a6b44625d29e?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40" loading="lazy"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">James</span>
+	                <span class="date">June 3, 2021 at 9:31 pm</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-612135" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Hi Jason.</p>
+<p>P(theta | X) = P(X | theta) * P(theta)</p>
+<p>is wrong.</p>
+<p><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="0" style="font-size: 116.9%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D443 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c28"></mjx-c></mjx-mo><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D703 TEX-I"></mjx-c></mjx-mi><mjx-texatom texclass="ORD"><mjx-mo class="mjx-n"><mjx-c class="mjx-c7C"></mjx-c></mjx-mo></mjx-texatom><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D44B TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c29"></mjx-c></mjx-mo><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="4"><mjx-c class="mjx-c1D443 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c28"></mjx-c></mjx-mo><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D44B TEX-I"></mjx-c></mjx-mi><mjx-texatom texclass="ORD"><mjx-mo class="mjx-n"><mjx-c class="mjx-c7C"></mjx-c></mjx-mo></mjx-texatom><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D703 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c29"></mjx-c></mjx-mo><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2217"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="3"><mjx-c class="mjx-c1D443 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c28"></mjx-c></mjx-mo><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D703 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c29"></mjx-c></mjx-mo><mjx-texatom texclass="ORD"><mjx-mo class="mjx-n"><mjx-c class="mjx-c2F"></mjx-c></mjx-mo></mjx-texatom><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D443 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c28"></mjx-c></mjx-mo><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D44B TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c29"></mjx-c></mjx-mo></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo stretchy="false">(</mo><mi>θ</mi><mrow data-mjx-texclass="ORD"><mo stretchy="false">|</mo></mrow><mi>X</mi><mo stretchy="false">)</mo><mo>=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>X</mi><mrow data-mjx-texclass="ORD"><mo stretchy="false">|</mo></mrow><mi>θ</mi><mo stretchy="false">)</mo><mo>∗</mo><mi>P</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo><mrow data-mjx-texclass="ORD"><mo>/</mo></mrow><mi>P</mi><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container>. Am I missing something?</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-612135" data-commentid="612135" data-postid="9158" data-belowelement="comment-612135" data-respondelement="respond" data-replyto="Reply to James" aria-label="Reply to James">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-612175" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-2">
+
+	      	<div id="li-comment-612175" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40" loading="lazy"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">June 4, 2021 at 6:50 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-612175" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>The denominator is often dropped as a normalizing constant.</p>
+<p>I might discuss this here:<br>
+<a href="https://machinelearningmastery.com/bayes-theorem-for-machine-learning/" rel="nofollow ugc">https://machinelearningmastery.com/bayes-theorem-for-machine-learning/</a></p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/bayes-optimal-classifier/#comment-612175" data-commentid="612175" data-postid="9158" data-belowelement="comment-612175" data-respondelement="respond" data-replyto="Reply to Jason Brownlee" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+			</ol>
+		 	</div>	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://machinelearningmastery.com/bayes-optimal-classifier/#respond" style="display:none;">Click here to cancel reply.</a></small></h3><form action="https://machinelearningmastery.com/wp-comments-post.php?wpe-comment-post=mlmastery" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label class="hide" for="comment">Comment</label> <textarea tabindex="4" id="comment" name="comment" cols="50" rows="10" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" class="txt" tabindex="1" value="" size="30" aria-required="true"><label for="author">Name <span class="required">(required)</span></label> </p>
+<p class="comment-form-email"><input id="email" name="email" type="text" class="txt" tabindex="2" value="" size="30" aria-required="true"><label for="email">Email (will not be published) <span class="required">(required)</span></label> </p>
+<p class="comment-form-url"><input id="url" name="url" type="text" class="txt" tabindex="3" value="" size="30"><label for="url">Website</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Submit Comment"> <input type="hidden" name="comment_post_ID" value="9158" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="d008f0183b"></p><p style="display: none !important;"><label>Δ<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js" name="ak_js" value="1637267898533"><script>document.getElementById( "ak_js" ).setAttribute( "value", ( new Date() ).getTime() );</script></p></form>	</div><!-- #respond -->
+	     
+            </section><!-- /#main -->
+                
+            <aside id="sidebar">
+<div id="woo_blogauthorinfo-2" class="widget widget_woo_blogauthorinfo"><span class="left"><img alt="" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/1d75d46040c28497f0dee5d8e100db37.jpeg" srcset="https://secure.gravatar.com/avatar/1d75d46040c28497f0dee5d8e100db37?s=176&amp;d=mm&amp;r=g 2x" class="avatar avatar-88 photo" height="88" width="88" loading="lazy"></span>
+<p><strong>Welcome!</strong><br>
+I'm <em>Jason Brownlee</em> PhD <br>
+and I <strong>help developers</strong> get results with <strong>machine learning</strong>.<br>
+<a href="https://machinelearningmastery.com/about">Read more</a></p>
+<div class="fix"></div>
+</div><div id="custom_html-89_clone" class="widget_text widget widget_custom_html q2w3-widget-clone-primary" style="top: 10px; width: 306.297px; height: 68.6875px; visibility: hidden;"></div><div id="custom_html-89" class="widget_text widget widget_custom_html" style="top: 10px; width: 306.297px; position: fixed;"><div class="textwidget custom-html-widget"><h4>Never miss a tutorial:</h4>
+<br>
+<div style="text-align: left;">
+<a href="https://www.linkedin.com/company/machine-learning-mastery/"><img width="30" height="30" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/small_icon_blue_linkedin3.webp" alt="LinkedIn"></a>
+&nbsp;&nbsp;&nbsp;
+<a href="https://twitter.com/TeachTheMachine"><img width="30" height="30" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/small_icon_blue_twitter3.webp" alt="Twitter"></a>
+&nbsp;&nbsp;&nbsp;
+<a href="https://www.facebook.com/MachineLearningMastery/"><img width="30" height="30" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/small_icon_blue_facebook3.webp" alt="Facebook"></a>
+&nbsp;&nbsp;&nbsp;
+<a href="https://machinelearningmastery.com/newsletter/"><img width="30" height="30" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/small_icon_blue_email3.webp" alt="Email Newsletter"></a>
+&nbsp;&nbsp;&nbsp;
+<a href="https://machinelearningmastery.com/rss-feed/"><img width="30" height="30" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/small_icon_blue_rss3.webp" alt="RSS Feed"></a>
+</div></div></div><div id="custom_html-59_clone" class="widget_text widget widget_custom_html q2w3-widget-clone-primary" style="top: 108.688px; width: 306.297px; height: 408.688px; visibility: hidden;"></div><div id="custom_html-59" class="widget_text widget widget_custom_html" style="top: 108.688px; width: 306.297px; position: fixed;"><div class="textwidget custom-html-widget"><h4>Picked for you:</h4>
+<br>
+<div class="display-posts-listing image-left"><div class="listing-item"><a class="image" href="https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/"><img width="150" height="150" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/ROC-Curve-Plot-for-a-No-Skill-Classifier-and-a-Logistic-Regression-Model-150x150.webp" class="attachment-thumbnail size-thumbnail wp-post-image" alt="ROC Curve Plot for a No Skill Classifier and a Logistic Regression Model" loading="lazy"></a> <a class="title" href="https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/" rel="nofollow">How to Use ROC Curves and Precision-Recall Curves for Classification in Python</a></div><div class="listing-item"><a class="image" href="https://machinelearningmastery.com/calibrated-classification-model-in-scikit-learn/"><img width="150" height="150" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/Calibrated-and-Uncalibrated-SVM-Reliability-Diagram-150x150.webp" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Calibrated and Uncalibrated SVM Reliability Diagram" loading="lazy"></a> <a class="title" href="https://machinelearningmastery.com/calibrated-classification-model-in-scikit-learn/" rel="nofollow">How and When to Use a Calibrated Classification Model with scikit-learn</a></div><div class="listing-item"><a class="image" href="https://machinelearningmastery.com/what-is-bayesian-optimization/"><img width="150" height="150" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/Plot-of-The-Input-Samples-Evaluated-with-a-Noisy-dots-and-Non-Noisy-Line-Objective-Function-150x150.webp" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Plot of The Input Samples Evaluated with a Noisy (dots) and Non-Noisy (Line) Objective Function" loading="lazy"></a> <a class="title" href="https://machinelearningmastery.com/what-is-bayesian-optimization/" rel="nofollow">How to Implement Bayesian Optimization from Scratch in Python</a></div><div class="listing-item"><a class="image" href="https://machinelearningmastery.com/divergence-between-probability-distributions/"><img width="150" height="150" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/Histogram-of-Two-Different-Probability-Distributions-for-the-same-Random-Variable-150x150.webp" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Histogram of Two Different Probability Distributions for the Same Random Variable" loading="lazy"></a> <a class="title" href="https://machinelearningmastery.com/divergence-between-probability-distributions/" rel="nofollow">How to Calculate the KL Divergence for Machine Learning</a></div><div class="listing-item"><a class="image" href="https://machinelearningmastery.com/cross-entropy-for-machine-learning/"><img width="150" height="150" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/Line-Plot-of-Probability-Distribution-vs-Cross-Entropy-for-a-Binary-Classification-Task-With-Extreme-Case-Removed3-150x150.webp" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Line Plot of Probability Distribution vs Cross-Entropy for a Binary Classification Task With Extreme Case Removed" loading="lazy"></a> <a class="title" href="https://machinelearningmastery.com/cross-entropy-for-machine-learning/" rel="nofollow">A Gentle Introduction to Cross-Entropy for Machine Learning</a></div></div></div></div><div id="custom_html-61_clone" class="widget_text widget widget_custom_html q2w3-widget-clone-primary" style="top: 547.375px; width: 306.297px; height: 139.219px; visibility: hidden;"></div><div id="custom_html-61" class="widget_text widget widget_custom_html" style="top: 547.375px; width: 306.297px; position: fixed;"><div class="textwidget custom-html-widget"><div style="text-align: center;">
+	<p></p><h4>Loving the Tutorials?</h4><p></p>
+
+<p>The <a href="https://machinelearningmastery.com/probability-for-machine-learning/" rel="nofollow">Probability for Machine Learning</a> EBook is where you'll find the <strong><i>Really Good</i></strong> stuff.</p>
+
+<a href="https://machinelearningmastery.com/probability-for-machine-learning/" class="woo-sc-button  red"><span class="woo-">&gt;&gt; See What's Inside</span></a>
+
+</div></div></div></aside><!-- /#sidebar -->
+
+		</div><!-- /#main-sidebar-container -->         
+
+		
+    </div><!-- /#content -->
+	
+	<footer id="footer" class="col-full">
+
+		
+		<div id="copyright" class="col-left">
+			<p>© 2021 Machine Learning Mastery. All Rights Reserved.<br>
+<a href="https://www.linkedin.com/company/machine-learning-mastery/">LinkedIn</a> |
+<a href="https://twitter.com/TeachTheMachine">Twitter</a> |
+<a href="https://www.facebook.com/MachineLearningMastery/">Facebook</a> |
+<a href="https://machinelearningmastery.com/newsletter/">Newsletter</a> |
+<a href="https://machinelearningmastery.com/rss-feed/">RSS</a></p>		</div>
+
+		<div id="credit" class="col-right">
+			<p><a href="https://machinelearningmastery.com/privacy/">Privacy</a> | 
+<a href="https://machinelearningmastery.com/disclaimer/">Disclaimer</a> | 
+<a href="https://machinelearningmastery.com/terms-of-service/">Terms</a> | 
+<a href="https://machinelearningmastery.com/contact/">Contact</a> |
+<a href="https://machinelearningmastery.com/sitemap/">Sitemap</a> |
+<a href="https://machinelearningmastery.com/site-search/">Search</a></p>		</div>
+
+	</footer>
+
+	
+	</div><!-- /#inner-wrapper -->
+
+</div><!-- /#wrapper -->
+
+<div class="fix"></div><!--/.fix-->
+
+<!-- Drip -->
+<script data-cfasync="false" type="text/javascript">
+  var _dcq = _dcq || [];
+  var _dcs = _dcs || {};
+  _dcs.account = '9556588';
+
+  (function() {
+    var dc = document.createElement('script');
+    dc.type = 'text/javascript'; dc.async = true;
+    dc.src = '//tag.getdrip.com/9556588.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(dc, s);
+  })();
+</script>
+<!-- end Drip --><script type="text/javascript" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/comment-reply.min.js" id="comment-reply-js" defer=""></script>
+<script data-minify="1" type="text/javascript" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/tex-chtml.js" id="mathjax-js" defer=""></script>
+<script type="text/javascript" id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type="text/javascript" id="rocket-preload-links-js-extra">
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/register\/machine-learning-university\/|\/courses\/\/lessons\/holding-back-goals\/|\/courses\/course-get-started\/|\/courses\/course-get-started\/lessons\/holding-back-goals\/|\/courses\/course-get-started\/lessons\/why-machine-learning-does-not-have-to-be-so-hard\/|\/courses\/course-get-started\/lessons\/how-to-think-about-machine-learning\/|\/courses\/course-get-started\/lessons\/find-your-machine-learning-tribe\/|\/courses\/step-by-step-process\/|\/courses\/probability-for-machine-learning\/|\/account\/|\/register\/|\/courses\/|\/machine-learning-mastery-university-registration\/|\/register\/|\/newsletter\/|\/(.+\/)?feed\/?.+\/?|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$)|\/wp-admin\/|\/logout\/|\/login\/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm","siteUrl":"https:\/\/machinelearningmastery.com","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="text/javascript" id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="text/javascript" id="q2w3_fixed_widget-js-extra">
+/* <![CDATA[ */
+var q2w3_sidebar_options = [{"sidebar":"primary","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":400,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["custom_html-89","custom_html-50","custom_html-90","custom_html-91","custom_html-58","custom_html-60","custom_html-59","custom_html-84","custom_html-51","custom_html-56","custom_html-55","custom_html-57","custom_html-53","custom_html-54","custom_html-52","custom_html-48","custom_html-49","custom_html-80","custom_html-47","custom_html-85","custom_html-30","custom_html-29","custom_html-28","custom_html-27","custom_html-3","custom_html-24","custom_html-23","custom_html-22","custom_html-21","custom_html-20","custom_html-19","custom_html-18","custom_html-17","custom_html-16","custom_html-15","custom_html-14","custom_html-13","custom_html-11","custom_html-10","custom_html-5","custom_html-9","custom_html-61","custom_html-81","custom_html-86","custom_html-92","custom_html-97"]}];
+/* ]]> */
+</script>
+<script type="text/javascript" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/q2w3-fixed-widget.min.js" id="q2w3_fixed_widget-js" defer=""></script>
+<script type="text/javascript" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/wp-embed.min.js" id="wp-embed-js" defer=""></script>
+<script type="text/javascript">function initTwitCount(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://static1.twitcount.com/js/twitcount.js';fjs.parentNode.insertBefore(js,fjs)}}
+        var ssb_twit_count_init=!1;addEventListener('mouseover',function(event){if(!ssb_twit_count_init){initTwitCount(document,'script','twitcount_plugins')
+        ssb_twit_count_init=!0}})</script><script type="text/javascript">window.lazyLoadOptions={elements_selector:"iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script async="" data-no-minify="1" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/lazyload.min.js" type="text/javascript"></script>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me --><div class="drip-tab-container">
+  <div id="drip-2211" class="drip-tab bottom right no-image classic">
+    <div id="drip-header-2211" class="drip-header">
+      <a href="https://machinelearningmastery.com/bayes-optimal-classifier/#" id="drip-toggle-2211" class="drip-toggle">
+        <h2 id="drip-teaser-2211">Start Machine Learning</h2>
+        <span id="drip-tab-up-2211" class="drip-arrow up">
+          <svg width="12px" height="8px" viewBox="1362 659 12 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <polygon id="right_angle" stroke="none" fill="#FFFFFF" fill-rule="evenodd" transform="translate(1368.000000, 662.703125) rotate(-90.000000) translate(-1368.000000, -662.703125) " points="1364.29688 667.296875 1368.89062 662.703125 1364.29688 658.109375 1365.70312 656.703125 1371.70312 662.703125 1365.70312 668.703125"></polygon>
+          </svg>
+        </span>
+        <span id="drip-tab-down-2211" class="drip-arrow down" style="display: none"></span>
+      </a>
+    </div>
+
+    <div id="drip-content-2211" class="drip-content drip-clearfix" style="height: auto; bottom: -499px;">
+      <div id="drip-form-panel-2211" class="drip-panel" style="display: block;">
+        <a id="drip-close-2211" class="drip-close">×</a>
+        <h3 id="drip-content-header-2211">Start Machine Learning</h3>
+        <div id="drip-scroll-2211" class="drip-scroll">
+          <div class="drip-clearfix">
+            <div class="drip-description">You can master applied Machine Learning&nbsp;<br>
+<strong>without math or fancy degrees</strong>.<br>
+Find out how in this <em>free</em>&nbsp;and <em>practical</em>&nbsp;course.</div>
+          </div>
+          <form id="drip-form-2211">
+            <div style="display: none">
+              <input type="hidden" name="form_id" value="2211">
+              
+            </div>
+            <dl class="no-labels">
+                  <dt class="label-for-type-email">
+    Email Address
+      <span title="Required"> *</span>
+  </dt>
+  <dd>
+    <input type="email" name="fields[email]" value="" placeholder="Email Address" class="drip-text-field" id="drip-email-field-2211" tabindex="0">
+<div id="drip-errors-for-email-2211" class="drip-errors"></div>
+
+  </dd>
+
+                  <dt class="label-for-type-eu_consent">
+    
+  </dt>
+  <dd>
+      <div class="classic--checkbox hidden" data-container="eu-checkbox">
+    <input type="hidden" name="fields[eu_consent]" id="drip-field-eu_consent-2211-denied" value="denied" disabled="disabled">
+    <input type="checkbox" name="fields[eu_consent]" id="drip-field-eu_consent-2211" value="granted" disabled="disabled">
+    <label for="drip-field-eu_consent-2211">I consent to receive information about services and special offers by email. For more information, see the <a href="https://machinelearningmastery.com/privacy/">Privacy Policy</a>.</label>
+  </div>
+
+  </dd>
+
+                <input type="hidden" name="fields[eu_consent_message]" value="I consent to receive information about services and special offers by email. For more information, see the Privacy Policy (https://machinelearningmastery.com/privacy/)." tabindex="-1">
+
+              <div style="display: none;" aria-hidden="true">
+  <dt for="website">Website</dt>
+  <dd>
+    <input type="text" id="website" name="website" placeholder="Website" class="drip-text-field" tabindex="-1" autocomplete="false" value="">
+  </dd>
+</div>
+
+            </dl>
+            <div class="form-controls">
+              <input type="submit" name="submit" value="Start My Email Course" id="drip-submit-2211" class="drip-submit-button">
+            </div>
+            <div id="drip-errors-for-base-2211" class="drip-errors dfwid-error"></div>
+
+          </form>
+        </div>
+      </div>
+
+      <div id="drip-success-panel-2211" class="drip-success drip-panel drip-clearfix drip-form-success-message" style="display: none">
+        <a id="drip-hide-2211" class="drip-close">×</a>
+        <h3>Thank you for signing up!</h3>
+        <p class="drip-description">Please check your email and click the link provided to confirm your subscription.</p>
+      </div>
+    </div>
+  </div>
+</div><iframe scrolling="no" frameborder="0" allowtransparency="true" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/widget_iframe.a53eecb4584348a2ad32ec2ae21f6eae.html" title="Twitter settings iframe" style="display: none;"></iframe><div class="lp-popup__iframe-wrapper" style="width: 100%;
+  height: 100%;
+  position: fixed;
+  display: none;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  z-index: 999999999;
+  box-sizing: border-box;"><iframe class="lp-popup__iframe" scrolling="no" style="width: 100%;
+  height: 100%;
+  border: none;
+  margin: 0;
+  padding: 0;" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/saved_resource.html" data-leadbox-frame-id="hjcywzAaaKuUBKVifbRio8" data-leadbox-frame-params-key="NO_PARAMS_20160921"></iframe></div><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./A Gentle Introduction to the Bayes Optimal Classifier_files/saved_resource(1).html"></iframe></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
